@@ -43,7 +43,13 @@ ol,ul{list-style:none}
 /* =========================================================
    LANDING
    ========================================================= */
-.landing{position:fixed;inset:0;background:var(--night);color:var(--night-fg);display:flex;overflow:hidden}
+.landing{--p:0;position:relative;height:100vh;height:100svh;background:var(--night);color:var(--night-fg);display:flex;overflow:hidden}
+.landing .shot.on .ph img,.landing .shot.on .ph video{filter:brightness(calc(1 - var(--p) * .7))}
+.landing .l-bottom,.landing .l-top{opacity:calc(1 - var(--p) * 1.5);transform:translateY(calc(var(--p) * -90px))}
+.scroll-cue{position:absolute;z-index:3;right:var(--gut);bottom:max(28px,env(safe-area-inset-bottom));width:30px;height:48px;border:1px solid rgba(238,242,242,.45);border-radius:999px;opacity:calc(1 - var(--p) * 3)}
+.scroll-cue span{position:absolute;left:50%;top:10px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--night-fg);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(18px);opacity:0}}
+.feature,.mast-bar + main{scroll-margin-top:56px}
 .reel{position:relative;flex:1}
 .shot{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
 .shot.on{opacity:1}
