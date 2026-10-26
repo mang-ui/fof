@@ -30,7 +30,11 @@ window.ICONS = {
   belt:    '<rect x="3" y="9" width="18" height="6" rx="1.5"/><rect x="9" y="7.5" width="6" height="9" rx="1"/><path d="M12 10.5v3"/>',
   pen:     '<path d="M15 4l5 5L9 20H4v-5z"/><path d="M13 6l5 5"/>',
   figure:  '<circle cx="12" cy="5.5" r="2.5"/><path d="M8 21v-6H6.5v-4.5a2 2 0 012-2h7a2 2 0 012 2V15H16v6"/><path d="M12 13v8"/>',
-  branch:  '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M6 13c0-3 4-5 10-5"/>'
+  branch:  '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M6 13c0-3 4-5 10-5"/>',
+  train:   '<rect x="5" y="4" width="14" height="12" rx="3"/><path d="M5 11h14"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/><path d="M8 16l-2 4M16 16l2 4"/>',
+  rabbit:  '<path d="M9.5 10C8 7 8 3.5 9.5 3.5S11.5 7 11.5 10M14.5 10C16 7 16 3.5 14.5 3.5S12.5 7 12.5 10"/><circle cx="12" cy="14.5" r="5.5"/><circle cx="10" cy="14" r=".7"/><circle cx="14" cy="14" r=".7"/>',
+  plane:   '<path d="M21 4L3 11l7 2 2 7z"/><path d="M10 13l5-5"/>',
+  bug:     '<ellipse cx="12" cy="13.5" rx="4.5" ry="6"/><path d="M12 7.5v12M7.5 11H4M7.5 15H4M16.5 11H20M16.5 15H20M10 7l-2-3M14 7l2-3"/>',
 };
 
 window.icon = function (name, cls) {
