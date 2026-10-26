@@ -129,7 +129,7 @@ window.SITE = {
       credits: [
         { part: "플레이 흐름 · UX", main: [ { n: "이정희", w: "튜토리얼 · 레벨 진행 구조 · 목표 안내 · 플레이어 동선 설계" } ],
           sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] },
-        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 70% 이상 제작 · 레벨 구성 · 디테일" } ] }
+        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] }
       ],
       readTime: "5분",
       facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" } ],
@@ -162,7 +162,7 @@ window.SITE = {
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
         { part: "게임 시스템", main: [ { n: "이정희", w: "캐릭터 전환 · AI 추적 시스템 · 오브젝트 상호작용" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "동료 NPC AI 대화 구조 설계 · 구역 상태 시스템" } ],
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 대화 구조 설계 · 구역 상태 시스템" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] }
       ],
       readTime: "5분",
@@ -222,7 +222,7 @@ window.SITE = {
       credits: [
         { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ],
           sub: [ { n: "이정희", w: "Ron 3D 모델링 · 리토폴로지 · Substance Painter 텍스처" } ] },
-        { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인 (전체의 70% 이상)" } ] },
+        { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
         { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
           sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" },
                  { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] }
@@ -269,7 +269,7 @@ window.SITE = {
       credits: [
         { part: "게임 시스템 · UX", main: [ { n: "이정희", w: "핵심 플레이 루프 · 퀘스트 시스템 · 시스템 통합 (Blueprint · Story Framework)" } ],
           sub: [ { n: "김영은", w: "마그네틱 시스템 · 홀로그램 시스템" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 대화 구조 설계 · 구역 상태 시스템 C++ 플러그인 (FGZoneSystem) 설계 · 구현" } ],
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 대화 구조 설계 · 구역 상태 시스템 (C++ 플러그인)" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
         { part: "플레이테스트", sub: [ { n: "이정희", w: "전시 플레이테스트로 UX 문제 파악 · 개선" } ] }
       ],
@@ -329,14 +329,14 @@ window.SITE = {
       },
       {
         id: "donghyeok", n: "윤동혁", r: "Level Designer · AI NPC Programmer", img: "",
-        parts: ["레벨 디자인 (70% 이상)", "AI NPC 대화 구조", "구역 상태 시스템 (C++)"],
+        parts: ["레벨 디자인", "AI NPC 대화 구조", "구역 상태 시스템"],
         quote: "“너무 인위적이지 않으면서도, 목표는 쉽게 찾을 수 있도록.”",
         body: [
-          "시나리오와 컨셉아트의 분위기에 맞춰 전반적인 레벨 구성과 디테일을 구현하며, 공간이 시각적으로 설득력 있게 느껴지도록 만드는 데 집중했다.",
-          "AI NPC는 기존 게임의 결정론적 경험보다 더 풍부하고 생동감 있는 반응을 느낄 수 있도록 제작했다."
+          "전체 레벨의 70% 이상을 만들었다. 시나리오와 컨셉아트의 분위기에 맞춰 레벨 구성과 디테일을 구현하며, 공간이 시각적으로 설득력 있게 느껴지도록 만드는 데 집중했다.",
+          "동료 NPC 레프의 AI 대화 구조를 설계했다. 판단은 게임 로직이 하고 AI는 말투만 맡도록 나눴고, 플레이어가 어느 구역에 얼마나 머물렀는지 기록하는 구역 상태 시스템을 C++ 플러그인으로 만들어 대화의 재료로 썼다."
         ],
-        works: ["", "", ""],
-        links: [ { label: "포트폴리오", href: "#" }, { label: "Email", href: "#" } ]
+        works: ["assets/video/npc-ai.mp4", "assets/img/shot-corridor.jpg", "assets/img/shot-ron-run.jpg"],
+        links: [ { label: "포트폴리오 (PDF)", href: "assets/docs/portfolio-yoon-donghyeok.pdf" }, { label: "a01089841040@gmail.com", href: "mailto:a01089841040@gmail.com" } ]
       },
       {
         id: "jeonghee", n: "이정희", r: "Game Designer · UI/UX Designer", img: "",
