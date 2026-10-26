@@ -142,6 +142,10 @@ ol,ul{list-style:none}
 a.picto{transition:background .2s}
 a.picto:hover{background:var(--card)}
 a.picto .more{margin-top:auto;padding-top:6px}
+.track-lead{margin-top:18px}
+.track-lead .cover-img{margin-top:0}
+.yt-link{font-weight:700;color:var(--ink);white-space:nowrap}
+.yt-link:hover{color:var(--accent)}
 .loop-note{display:flex;flex-direction:column;gap:6px;max-width:680px;margin-top:20px;font-size:15px;line-height:1.7}
 .keys{display:flex;flex-wrap:wrap;gap:6px}
 .key{font:500 11px var(--mono);letter-spacing:.08em;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 10px}
