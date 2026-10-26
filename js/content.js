@@ -41,7 +41,7 @@ window.SITE = {
   cover: {
     title: "기억, 유대,<br>그리고 <em>가족</em>",
     deck: `로봇의 시선과 망가진 우주선이라는 낯선 공간을 통해 기억·유대·가족을 되짚어보는 ${GENRE}.`,
-    trailer: { src: "assets/img/fof-logo.jpg", poster: "", cap: "FOF home://error — 플레이 영상 유튜브 링크로 교체 예정" }
+    trailer: { src: "https://youtu.be/davKGqPsXQQ", poster: "", cap: "FOF home://error — 인게임 플레이 영상" }
   },
 
   /* ---------- 게임 소개 ---------- */
@@ -231,6 +231,7 @@ window.SITE = {
       readTime: "8분",
       facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
       blocks: [
+        { type: "video", src: "https://youtu.be/bSGboK4WxNQ", cap: "FOF home://error — 다큐멘테이션 영상" },
         { type: "p", text: "언리얼 엔진 5와 AI를 결합한 하이브리드 시네마틱 제작 방식을 썼다. 언리얼 엔진에서 카메라 구도와 장면을 구성한 뒤, 이를 스틸컷으로 추출해 AI 영상으로 생성한다. 시네마틱 제작 효율을 높이는 동시에, 실제 게임 플레이 화면과 시네마틱 영상 사이의 시각적 이질감을 줄이기 위해서다. 여기에 NPC 대사까지 AI로 연동했다." },
         { type: "workflow", title: "파이프라인 개요", steps: [
           { icon: "edit", tool: "PLANNING", t: "기획 · 시나리오", d: "플레이 흐름과 레벨 루프, 장면 구성을 설계한다." },

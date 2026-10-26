@@ -242,6 +242,7 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .inline-fig{margin:28px 0}
 .inline-fig .ph{aspect-ratio:16/9}
 .inline-fig .ph.filled{aspect-ratio:auto}
+.inline-fig .ph.yt{aspect-ratio:16/9}
 .inline-fig .ph.filled > img,.inline-fig .ph.filled > video{position:static;height:auto}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
 .pair .inline-fig{margin:0}

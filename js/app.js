@@ -17,7 +17,7 @@
     if (!src) return `<div class="ph ${cls || ""}" ${label ? `data-l="${label}"` : ""}></div>`;
     // 유튜브 링크면 임베드 (용량 큰 플레이 영상은 유튜브에 올리고 링크만 넣는 걸 권장)
     const yt = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
-    if (yt) return `<div class="ph filled ${cls || ""}"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0" title="video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+    if (yt) return `<div class="ph filled yt ${cls || ""}"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0" title="video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
     const isVideo = /\.(mp4|webm|mov)$/i.test(src);
     const inner = isVideo
       ? `<video src="${src}" ${opt.poster ? `poster="${opt.poster}"` : ""} muted playsinline loop autoplay preload="metadata"></video>`
