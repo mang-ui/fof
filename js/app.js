@@ -319,8 +319,21 @@
     const ms = C.team.members, i = Math.max(0, ms.findIndex(m => m.id === id));
     const m = ms[i], pv = ms[(i - 1 + ms.length) % ms.length], nx = ms[(i + 1) % ms.length];
     const count = `${C.team.name} · ${pad(i + 1)}/${pad(ms.length)}`;
+    // 다섯 번째 멤버 = 플레이어. 사진 자리에 부스 입장권을 그린다
+    const B = C.booth;
     const left = m.you
-      ? `<div class="ph you portrait" data-l="${pad(i + 1)} / ${pad(ms.length)}"></div>`
+      ? (B ? `
+        <div class="you-ticket" role="img" aria-label="${esc(`${B.show} 부스 ${B.code}, ${B.dates}`)}">
+          <div class="tk-top"><span>${B.host}</span><span>${pad(i + 1)} / ${pad(ms.length)}</span></div>
+          <div class="tk-show">${B.show}</div>
+          <div class="tk-you">YOU</div>
+          <dl class="tk-meta">
+            <div><dt>BOOTH</dt><dd class="tk-code">${B.code}</dd></div>
+            <div><dt>DATE</dt><dd>${B.dates}</dd></div>
+            <div><dt>PLAY</dt><dd>${B.play}</dd></div>
+          </dl>
+          <div class="tk-foot">${C.title} ${C.subtitle}</div>
+        </div>` : `<div class="ph you portrait" data-l="${pad(i + 1)} / ${pad(ms.length)}"></div>`)
       : media(m.img, "light portrait", "PORTRAIT", { alt: m.n });
     const right = m.you ? `
         <div class="you-cta">
