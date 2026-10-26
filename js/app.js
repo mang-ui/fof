@@ -89,15 +89,6 @@
           <div class="dots" id="dots">${L.shots.map(() => "<i></i>").join("")}</div>
         </div>
       </div>
-      <aside class="qr-side">
-        <div class="mast">${C.title}<small>${C.subtitle}</small><div class="label" style="margin-top:10px">${C.issue}</div></div>
-        <div>
-          <div class="qr-box">${C.qr ? `<img src="${C.qr}" alt="QR" style="width:100%;display:block;image-rendering:pixelated">` : `<canvas id="qr" width="29" height="29"></canvas>`}</div>
-          <h3>폰으로 스캔하고<br>이어서 읽어보세요</h3>
-          <p>게임 소개 · 캐릭터 · 제작진</p>
-        </div>
-        <div class="label">${C.credit}</div>
-      </aside>
     </section>`;
   }
   function startReel() {
@@ -114,7 +105,6 @@
     };
     next();
     reelTimer = setInterval(next, 4500);
-    drawQR();
   }
 
   /* =========================================================
@@ -314,37 +304,6 @@
     if (location.hash !== "#/game") { location.hash = "#/game"; setTimeout(go, 80); }
     else go();
   });
-
-  /* 가짜 QR — siteUrl 확정되면 실제 QR 이미지로 교체 예정 */
-  function drawQR() {
-    const cv = document.getElementById("qr");
-    if (!cv) return;
-    const x = cv.getContext("2d"), N = 29;
-    let s = 11;
-    const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
-    x.fillStyle = "#fff"; x.fillRect(0, 0, N, N); x.fillStyle = "#000";
-    for (let i = 2; i < N - 2; i++) for (let j = 2; j < N - 2; j++) if (r() > .52) x.fillRect(i, j, 1, 1);
-    const f = (ox, oy) => {
-      x.fillStyle = "#fff"; x.fillRect(ox - 1, oy - 1, 9, 9);
-      x.fillStyle = "#000"; x.fillRect(ox, oy, 7, 7);
-      x.fillStyle = "#fff"; x.fillRect(ox + 1, oy + 1, 5, 5);
-      x.fillStyle = "#000"; x.fillRect(ox + 2, oy + 2, 3, 3);
-    };
-    f(2, 2); f(N - 9, 2); f(2, N - 9);
-  }
-
-  /* 키오스크 모드: 주소 끝에 ?kiosk */
-  const proto = document.getElementById("proto");
-  function setKiosk(on) {
-    document.body.classList.toggle("kiosk", on);
-    if (proto) proto.textContent = on ? "모바일로 보기" : "키오스크 미리보기";
-  }
-  setKiosk(new URLSearchParams(location.search).has("kiosk"));
-  if (proto) proto.onclick = () => {
-    const on = !document.body.classList.contains("kiosk");
-    setKiosk(on);
-    if (on) location.hash = "#/";
-  };
 
   route();
 })();
