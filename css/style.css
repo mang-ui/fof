@@ -183,7 +183,7 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .slides{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
 .slides::-webkit-scrollbar{display:none}
 @media (min-width:700px){.slides{grid-auto-columns:calc((100% - 20px) / 2)}}
-@media (min-width:1000px){.slides{grid-auto-columns:calc((100% - 40px) / 3)}}
+@media (min-width:1000px){.slides{grid-auto-columns:calc((100% - (var(--n, 3) - 1) * 20px) / var(--n, 3))}}
 .slides .story,.stories.one .story{scroll-snap-align:start;padding:0;background:none}
 .slides .story .ph,.stories.one .story .ph{aspect-ratio:16/9}
 .slides .story-text,.stories.one .story-text{border-top:2px solid var(--ink);padding-top:12px}
