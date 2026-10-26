@@ -156,7 +156,7 @@ window.SITE = {
     },
     {
       id: "cooperate", track: "inside", sub: "Cooperate", keys: ["협력"],
-      t: "셋이어야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
+      t: "함께해야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
         { part: "게임 시스템", main: [ { n: "이정희", w: "캐릭터 전환 · AI 추적 시스템 · 오브젝트 상호작용" } ] },
