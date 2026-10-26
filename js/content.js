@@ -18,7 +18,7 @@ window.SITE = {
   subtitle: "home://error",
   issue: "Exhibition Issue · 2026",
   exhibit: "2026 전시 · 부스 A-00",          // TODO: 코엑스/킨텍스 확정되면 수정
-  siteUrl: "",                               // 배포 주소 확정되면 입력
+  siteUrl: "https://mang-ui.github.io/fof/",
   credit: "© 2026 TEAM FIVEGUYS. All Rights Reserved.",
   links: [
     { label: "Instagram", href: "#" },
@@ -50,7 +50,7 @@ window.SITE = {
     // [출처] 텍스트 뭉치 1026 > 게임 소개 · 기획의도 · 게임 특징 ① 탐험 내러티브
     text: [
       `〈FOF home://error〉는 우주선에 홀로 남겨진 반려로봇 ‘론’의 이야기를 담은 ${GENRE}이다. 플레이어는 폭풍으로 부서진 우주선을 탐험하며 흩어진 가족의 기억을 하나씩 되찾아 가고, 그 과정에서 가족의 부재를 마주한 론이 기억과 유대를 통해 다시 앞으로 나아가는 모습을 함께하게 된다.`,
-      "플레이어는 수리 로봇 Fix와 반려로봇 Ron을 번갈아 조작하며 함선을 탐색하고, AI 동료 레프가 그 곁을 함께한다. 탐색 자체가 인물의 과거와 관계를 이해하는 과정이 된다.",
+      "플레이어는 수리 로봇 Fix와 반려로봇 론을 번갈아 조작하며 함선을 탐색하고, AI 동료 레프가 그 곁을 함께한다. 탐색 자체가 인물의 과거와 관계를 이해하는 과정이 된다.",
       "이야기는 정해진 순서대로 보여 주는 것이 아니라, 플레이어가 직접 공간을 탐험하며 찾아낸다. 부서진 위버호의 1층, 1.5층, 2층을 오가며 가족이 남긴 흔적을 발견하고, 특정 장소에 닿거나 물건을 찾을 때마다 홀로그램 기억과 시네마틱이 열린다. 조각난 기억이 하나둘 모여 비로소 하나의 이야기가 완성된다."
     ],
     pull: "“맞아! 론은 내 동생이야.”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 올리, 프롤로그</small>"
@@ -85,7 +85,7 @@ window.SITE = {
     head: "플레이 방법",
     items: [
       { icon: "compass", t: "탐색", d: "폭풍으로 무너진 함선을 돌아다니며 길과 단서를 찾는다. 레프가 띄우는 함선 도면과 푸른 홀로그램 나비가 다음 목적지를 알려준다.", go: "explore" },
-      { icon: "swap", t: "협력", d: "F-404는 힘으로 구조물을 들어 길을 만들고, 레프는 스캔과 지도로 길을 안내하며, 작은 몸집의 론은 환풍구처럼 좁은 곳에 들어간다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다.", go: "cooperate" },
+      { icon: "swap", t: "협력", d: "Fix는 힘으로 구조물을 들어 길을 만들고, 레프는 스캔과 지도로 길을 안내하며, 작은 몸집의 론은 환풍구처럼 좁은 곳에 들어간다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다.", go: "cooperate" },
       { icon: "memory", t: "수집", d: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다.", go: "collect" }
     ],
     // 픽토그램 아래 한 줄 — 루프 구조
@@ -97,10 +97,10 @@ window.SITE = {
   characters: [
     { name: "Ron", kr: "론", role: "COMPANION ROBOT",
       desc: "지구에서부터 위버 가족과 함께 살아온 작은 반려로봇. 폭풍 사고로 기억 일부를 잃었지만 올리를 지켜야 한다는 마음만은 남아 있으며, 가슴의 푸른 LED 모듈 안에는 가족의 기억이 담겨 있다.", img: "assets/video/turntable-ron.mp4", poster: "assets/img/char-ron.jpg" },
-    { name: "Fix", kr: "F-404", role: "EXPLORATION & REPAIR",
+    { name: "Fix", kr: "S/N F-404", role: "EXPLORATION & REPAIR",
       desc: "프런티어 관제센터가 위버호에 보낸 대형 수리 로봇. 말수는 적지만 다정한 성격으로, 강한 힘으로 무너진 길을 열어 동료를 돕는다. 명령에 따라 움직이던 로봇에서 점차 스스로 판단해 론을 지키는 존재로 변해 간다.", img: "assets/video/turntable-fix.mp4", poster: "assets/img/char-fix.jpg" },
     { name: "Lef", kr: "레프", role: "SUPPORT UNIT",
-      desc: "F-404와 함께 파견된 작고 빠른 드론형 보조 로봇. 스캔과 통신, 지도 투사에 능하지만 손이 없어 늘 F-404에게 의지한다. 말이 많고 툴툴대지만, 결국 론을 회수품이 아닌 동료로 받아들인다.", img: "assets/video/turntable-lef.mp4", poster: "assets/img/char-lef.jpg" }
+      desc: "Fix와 함께 파견된 작고 빠른 드론형 보조 로봇. 스캔과 통신, 지도 투사에 능하지만 손이 없어 늘 Fix에게 의지한다. 말이 많고 툴툴대지만, 결국 론을 회수품이 아닌 동료로 받아들인다.", img: "assets/video/turntable-lef.mp4", poster: "assets/img/char-lef.jpg" }
   ],
   subCharacters: [
     { name: "헨리 위버", role: "FATHER · SCIENTIST", desc: "테라포밍 계획과 판타스마 에센스 기술을 이끈 과학자. 홀로 남을 론이 외롭지 않도록, 가족의 기억을 론과 함께 완성되는 형태로 남겼다.", img: "assets/video/sub-henry.mp4", poster: "assets/img/sub-henry.jpg" },
@@ -142,7 +142,7 @@ window.SITE = {
         ] },
         { type: "img", src: "assets/img/shot-ron-run.jpg", cap: "위버호 1F — 앞서 달리는 론과 뒤따르는 Fix" },
         { type: "workflow", title: "진행 흐름", steps: [
-          { icon: "compass", tool: "1F · 탐색", t: "회수품을 찾아서", d: "F-404와 레프가 회수품을 찾아 1층 엔진실로 들어선다." },
+          { icon: "compass", tool: "1F · 탐색", t: "회수품을 찾아서", d: "Fix와 레프가 회수품을 찾아 1층 엔진실로 들어선다." },
           { icon: "wrench", tool: "1F · 협력", t: "신원 불명의 로봇", d: "쓰러져 있던 작은 로봇의 팔을 찾아 고쳐 준다. 다시 움직이기 시작한 로봇이 론이다." },
           { icon: "robot", tool: "1F → 1.5F · 탐색", t: "론을 따라서", d: "앞서 달리는 론을 따라 1.5층으로 올라간다." },
           { icon: "power", tool: "1.5F → 2F · 탐색", t: "전력을 복구하라", d: "멈춘 전력을 살리려 2층 기계실로 향하지만, 길이 막혀 우회로를 찾는다." },
@@ -156,7 +156,7 @@ window.SITE = {
     },
     {
       id: "cooperate", track: "inside", sub: "Cooperate", keys: ["협력"],
-      t: "함께해야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
+      t: "함께해야 열리는 문", d: "힘의 Fix, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
         { part: "게임 시스템", main: [ { n: "이정희", w: "캐릭터 전환 · AI 추적 시스템 · 오브젝트 상호작용" } ] },
@@ -164,11 +164,11 @@ window.SITE = {
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] }
       ],
       readTime: "5분",
-      facts: [ { k: "ROBOTS", v: "F-404 · 레프 · 론" }, { k: "CONTROL", v: "Fix · Ron 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" } ],
+      facts: [ { k: "ROBOTS", v: "Fix · 레프 · 론" }, { k: "CONTROL", v: "Fix · 론 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" } ],
       blocks: [
-        { type: "p", text: "세 로봇은 서로 다른 능력으로 함께 문제를 푼다. 플레이어는 Fix와 Ron을 번갈아 조작하고, 레프는 AI 동료로 곁을 지킨다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다." },
+        { type: "p", text: "세 로봇은 서로 다른 능력으로 함께 문제를 푼다. 플레이어는 Fix와 론을 번갈아 조작하고, 레프는 AI 동료로 곁을 지킨다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다." },
         { type: "pictos", items: [
-          { icon: "wrench", t: "F-404", d: "힘으로 무너진 구조물을 들어 올려 길을 만든다." },
+          { icon: "wrench", t: "Fix", d: "힘으로 무너진 구조물을 들어 올려 길을 만든다." },
           { icon: "eye", t: "레프", d: "스캔과 지도 투사로 길을 안내하고, 상황에 맞춰 말을 건다." },
           { icon: "robot", t: "론", d: "작은 몸집으로 환풍구처럼 좁은 곳에 들어간다." }
         ] },
@@ -195,7 +195,7 @@ window.SITE = {
       readTime: "4분",
       facts: [ { k: "ITEMS", v: "장난감 4개 → 환풍구 열쇠" }, { k: "THEME", v: "기억 · 가족 · 유대" } ],
       blocks: [
-        { type: "p", text: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
+        { type: "p", text: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 론은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
         { type: "h", text: "2층에 흩어진 장난감" },
         { type: "pictos", items: [
           { icon: "robot", t: "로봇", d: "첫 번째 장난감 — 시퀀스가 함께 재생된다." },

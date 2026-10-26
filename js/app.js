@@ -17,12 +17,29 @@
     if (!src) return `<div class="ph ${cls || ""}" ${label ? `data-l="${label}"` : ""}></div>`;
     // 유튜브 링크면 임베드 (용량 큰 플레이 영상은 유튜브에 올리고 링크만 넣는 걸 권장)
     const yt = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
-    if (yt) return `<div class="ph filled yt ${cls || ""}"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0" title="video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+    const alt = esc(opt.alt || "");
+    if (yt) return `<div class="ph filled yt ${cls || ""}"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0" title="${alt || "YouTube"}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
     const isVideo = /\.(mp4|webm|mov)$/i.test(src);
+    // 영상은 data-src로만 걸어두고, 화면에 들어올 때 받아서 재생한다 (initVideos)
     const inner = isVideo
-      ? `<video src="${src}" ${opt.poster ? `poster="${opt.poster}"` : ""} muted playsinline loop autoplay preload="metadata"></video>`
-      : `<img src="${src}" alt="${opt.alt || ""}" loading="lazy">`;
+      ? `<video data-src="${src}" ${opt.poster ? `poster="${opt.poster}"` : ""} muted playsinline loop preload="none"${calm ? " controls" : ""}${alt ? ` aria-label="${alt}"` : ""}></video>`
+      : `<img src="${src}" alt="${alt}" loading="lazy">`;
     return `<div class="ph filled ${cls || ""}">${inner}</div>`;
+  }
+  const esc = t => String(t).replace(/<[^>]+>/g, "").replace(/"/g, "&quot;");
+
+  /* ---------- 영상: 보일 때만 받고 재생, 화면 밖으로 나가면 멈춤 ---------- */
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;   // 동작 줄이기 → 자동재생 대신 재생 버튼
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) {
+      if (!v.getAttribute("src")) v.src = v.dataset.src;
+      if (!calm) v.play().catch(() => {});
+    } else if (!v.paused) v.pause();
+  }), { rootMargin: "200px 0px" }) : null;
+  function initVideos() {
+    if (io) io.disconnect();
+    document.querySelectorAll("video[data-src]").forEach(v => io ? io.observe(v) : (v.src = v.dataset.src));
   }
 
   /* ---------- 공통 마스트헤드 ---------- */
@@ -45,7 +62,7 @@
 
   /* ---------- 기사 카드 · 슬라이더 ---------- */
   const Story = a => `
-    <a class="story" href="#/game/${a.id}">${media(a.thumb, "", a.sub.toUpperCase(), { poster: a.poster })}
+    <a class="story" href="#/game/${a.id}">${media(a.thumb, "", a.sub.toUpperCase(), { poster: a.poster, alt: a.t })}
     <div class="story-text"><div class="label">${a.sub}</div>${Keys(a)}<h3>${a.t}</h3><p>${a.d}</p><span class="more">기사 읽기</span></div></a>`;
   const arrow = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
   const Slider = list => `
@@ -95,16 +112,16 @@
       case "pull": return `<div class="pull">${b.text}</div>`;
       case "img":
       case "video":
-        return `<figure class="inline-fig">${media(b.src, "", b.src ? "" : (b.type === "video" ? "VIDEO" : "IMAGE"), { poster: b.poster })}
+        return `<figure class="inline-fig">${media(b.src, "", b.src ? "" : (b.type === "video" ? "VIDEO" : "IMAGE"), { poster: b.poster, alt: b.cap })}
           ${b.cap ? `<figcaption class="figcap"><span>${b.cap}</span></figcaption>` : ""}</figure>`;
       // 세로 사진 두 장을 나란히 — 원본 비율 그대로, 자르지 않는다
       case "pair":
-        return `<div class="pair">${b.items.map(it => `<figure class="inline-fig">${media(it.src, "", "IMAGE")}
+        return `<div class="pair">${b.items.map(it => `<figure class="inline-fig">${media(it.src, "", "IMAGE", { alt: it.cap })}
           ${it.cap ? `<figcaption class="figcap"><span>${it.cap}</span></figcaption>` : ""}</figure>`).join("")}</div>`;
       case "compare":
         return `<div class="compare">
-          <figure>${media(b.a.src, "", "A")}<figcaption>${b.a.cap || "BEFORE"}</figcaption></figure>
-          <figure>${media(b.b.src, "", "B")}<figcaption>${b.b.cap || "AFTER"}</figcaption></figure></div>`;
+          <figure>${media(b.a.src, "", "A", { alt: b.a.cap })}<figcaption>${b.a.cap || "BEFORE"}</figcaption></figure>
+          <figure>${media(b.b.src, "", "B", { alt: b.b.cap })}<figcaption>${b.b.cap || "AFTER"}</figcaption></figure></div>`;
       case "pictos": return Pictos(b.items);
       case "workflow":
         return `<figure class="wf"><figcaption class="label">${b.title || "Workflow"}</figcaption>
@@ -127,7 +144,7 @@
     return `
     <section class="landing">
       <div class="reel">
-        ${L.shots.map(s => `<div class="shot">${media(s.src || s.poster, "", "", { poster: s.poster })}</div>`).join("")}
+        ${L.shots.map(s => `<div class="shot">${media(s.src || s.poster, "", "", { poster: s.poster, alt: s.cap })}</div>`).join("")}
         <div class="l-top"><span class="label">${C.team.name}</span><span class="label">${C.exhibit}</span></div>
         <div class="l-bottom">
           <div class="l-shotcap" id="shotcap"></div>
@@ -168,7 +185,7 @@
         <div class="issue"><span class="label">${C.issue}</span><span class="label">${C.title} ${C.subtitle}</span></div>
         <h1>${C.cover.title}</h1>
         <p class="deck">${C.cover.deck}</p>
-        ${media(C.cover.trailer.src, "cover-img", "TRAILER", { poster: C.cover.trailer.poster })}
+        ${media(C.cover.trailer.src, "cover-img", "TRAILER", { poster: C.cover.trailer.poster, alt: C.cover.trailer.cap })}
         <div class="figcap"><span>${C.cover.trailer.cap}</span><span>Fig. 01</span></div>
       </section>
 
@@ -196,7 +213,7 @@
           <div class="body">${W.text.map(p => `<p>${p}</p>`).join("")}</div>
         </div>
         <dl class="world-facts">${W.facts.map(f => `<div><dt>${f.k}</dt><dd>${f.v}</dd></div>`).join("")}</dl>
-        ${W.img !== undefined ? media(W.img, "world-img", "WORLD", { poster: W.poster }) : ""}
+        ${W.img !== undefined ? media(W.img, "world-img", "WORLD", { poster: W.poster, alt: W.head }) : ""}
       </section>
 
       <section class="feature">
@@ -211,7 +228,7 @@
         <h2>등장인물</h2>
         <div class="chars">
           ${C.characters.map(c => `
-            <article class="char">${media(c.img, "", c.name.toUpperCase(), { poster: c.poster })}
+            <article class="char">${media(c.img, "", c.name.toUpperCase(), { poster: c.poster, alt: `${c.name} ${c.kr || ""}` })}
             <h3>${c.name}${c.kr ? `<small>${c.kr}</small>` : ""}</h3><div class="role">${c.role}</div><p>${c.desc}</p></article>`).join("")}
         </div>
         ${C.subCharacters.length ? `
@@ -219,7 +236,7 @@
           <div class="label">Supporting Cast</div>
           <div class="subs">
             ${C.subCharacters.map(c => `
-              <div class="sub">${media(c.img, "", "", { poster: c.poster })}
+              <div class="sub">${media(c.img, "", "", { poster: c.poster, alt: c.name })}
               <div><div class="role">${c.role}</div><b>${c.name}</b><p>${c.desc}</p></div></div>`).join("")}
           </div>
         </div>` : ""}
@@ -244,7 +261,7 @@
         <div class="members">
           ${C.team.members.map((m, i) => `
             <a class="mcard ${m.you ? "is-you" : ""}" href="#/team/${m.id}">
-              ${m.you ? `<div class="ph you" data-l="${pad(i + 1)} / ${pad(C.team.members.length)}"></div>` : media(m.img, "light", "PORTRAIT")}
+              ${m.you ? `<div class="ph you" data-l="${pad(i + 1)} / ${pad(C.team.members.length)}"></div>` : media(m.img, "light", "PORTRAIT", { alt: m.n })}
               <b>${m.n}</b><span>${m.r}</span></a>`).join("")}
         </div>
       </section>
@@ -274,7 +291,7 @@
           <p class="deck">${a.d}</p>
           <div class="byline"><span class="label">${a.byline || Byline(a)}</span>${a.readTime ? `<span class="label">읽는 시간 ${a.readTime}</span>` : ""}</div>
         </header>
-        ${media(a.hero, "art-hero", "HERO", { poster: a.poster })}
+        ${media(a.hero, "art-hero", "HERO", { poster: a.poster, alt: a.t })}
         <div class="art-body">
           <div class="body">${(a.blocks || []).map(Block).join("")}</div>
           ${(a.facts && a.facts.length) || a.credits ? `
@@ -298,14 +315,14 @@
     const count = `${C.team.name} · ${pad(i + 1)}/${pad(ms.length)}`;
     const left = m.you
       ? `<div class="ph you portrait" data-l="${pad(i + 1)} / ${pad(ms.length)}"></div>`
-      : media(m.img, "light portrait", "PORTRAIT");
+      : media(m.img, "light portrait", "PORTRAIT", { alt: m.n });
     const right = m.you ? `
         <div class="you-cta">
           ${m.now ? `<div class="dark"><span class="label">NOW</span><b>${m.now.t}</b><p>${m.now.d}</p></div>` : ""}
           ${m.later ? `<div><span class="label">COMING SOON</span><b>${m.later.t}</b><p>${m.later.d}</p></div>` : ""}
         </div>` : `
         <div class="label" style="margin-top:20px">Selected Works</div>
-        <div class="works">${(m.works || []).map((w, k) => media(w, "", `WORK ${pad(k + 1)}`)).join("")}</div>
+        <div class="works">${(m.works || []).map((w, k) => media(w, "", `WORK ${pad(k + 1)}`, { alt: `${m.n} 작업 ${k + 1}` })).join("")}</div>
         <div class="mem-links">${(m.links || []).map(l => `<a href="${l.href}">${l.label}</a>`).join("")}</div>`;
     return `${Mast("team")}
     <main class="wrap">
@@ -345,6 +362,7 @@
     const mag = a === "game" && document.getElementById("mag");
     window.scrollTo({ top: mag ? mag.offsetTop : 0, behavior: "instant" });
     if (home) { startReel(); initSliders(); }
+    initVideos();
   }
   const isHome = () => { const [a, b] = location.hash.replace(/^#\/?/, "").split("/"); return !a || (a === "game" && !b); };
   window.addEventListener("hashchange", route);
