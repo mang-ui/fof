@@ -74,12 +74,12 @@
   }
 
   /* ---------- 크레딧: 파트별 MAIN / SUB ---------- */
-  const Byline = a => (a.credits || []).map(c => `${c.part} · ${c.main.map(p => p.n).join(", ")}`).join(" / ");
+  const Byline = a => (a.credits || []).filter(c => c.main && c.main.length).map(c => `${c.part} · ${c.main.map(p => p.n).join(", ")}`).join(" / ");
   const Credits = a => !a.credits ? "" : `
     <div class="label credits-head">Credits</div>
     <div class="credits">${a.credits.map(c => `
       <div class="cr"><b>${c.part}</b>
-        ${[...c.main.map(p => [p, "MAIN"]), ...(c.sub || []).map(p => [p, "SUB"])].map(([p, tag]) => `
+        ${[...(c.main || []).map(p => [p, "MAIN"]), ...(c.sub || []).map(p => [p, "SUB"])].map(([p, tag]) => `
         <p><span class="role-tag${tag === "MAIN" ? " main" : ""}">${tag}</span>${p.n}${p.w ? `<small>${p.w}</small>` : ""}</p>`).join("")}
       </div>`).join("")}
     </div>`;
