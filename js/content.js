@@ -240,6 +240,18 @@ window.SITE = {
           { icon: "nodes", tool: "UE5 + AI", t: "AI NPC 연동", d: "플레이 상황에 맞는 대사를 생성하는 다이얼로그 시스템." },
           { icon: "camera", tool: "UE5 + AI VIDEO", t: "시네마틱 통합", d: "엔진 시퀀스와 AI 영상을 하나의 흐름으로 잇는다." }
         ] },
+        { type: "video", src: "assets/video/making-ron-rig.mp4", cap: "Ron 리깅 — 언리얼 엔진 테스트" },
+        { type: "h", text: "블루프린트로 만든 시스템" },
+        { type: "p", text: "퀘스트와 상호작용, 홀로그램 연출은 모두 언리얼 엔진 블루프린트로 구현했다. 탐색 · 협력 · 수집 루프를 움직이는 시스템들이다." },
+        { type: "video", src: "assets/video/bp-quest.mp4", cap: "퀘스트 시스템 — Story Framework 기반" },
+        { type: "pair", items: [
+          { src: "assets/video/bp-magnetic.mp4", cap: "마그네틱 시스템" },
+          { src: "assets/video/bp-holo-family.mp4", cap: "홀로그램 가족 — Niagara" }
+        ] },
+        { type: "pair", items: [
+          { src: "assets/video/bp-butterfly.mp4", cap: "홀로그램 나비 — 다음 목적지 안내" },
+          { src: "assets/video/bp-flashback.mp4", cap: "플래시백 헬퍼 — 기억 연출" }
+        ] },
         { type: "h", text: "AI로 찍은 시네마틱" },
         { type: "p", text: "많은 시간이 소요되는 시네마틱 제작 과정에 AI 영상 생성 도구를 적극적으로 도입했다. 카메라의 앵글과 조명, 인물의 동작까지 프롬프트로 세밀하게 디렉팅하며 장면을 구현했고, 언리얼 엔진으로 만든 게임 화면과 시네마틱이 하나의 작품처럼 느껴지도록 톤앤매너를 맞추는 데 집중했다." },
         { type: "workflow", title: "시네마틱 제작 워크플로우", steps: [
@@ -264,10 +276,10 @@ window.SITE = {
           { icon: "chat", t: "발화", d: "상황에 맞는 대사로 플레이어에게 말을 건다." }
         ] },
         { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 NPC 대사" },
-        { type: "img", src: "", cap: "컨트롤 리그 세팅 / 블루프린트 화면 자리" },
+        { type: "video", src: "assets/video/bp-lef-ai.mp4", cap: "레프 AI 블루프린트" },
         { type: "h", text: "네 명이 만든 위버호" },
         { type: "p", text: "[본문 자리 — 시행착오와 팀 이야기, 개발 현황 영상, 회의, 전시 현장 이야기]" },
-        { type: "video", src: "", cap: "LV1 · LV2 개발 현황" }
+        { type: "video", src: "assets/video/making-proto-level.mp4", cap: "프로토 레벨과 초기 캐릭터" }
       ]
     }
   ],
