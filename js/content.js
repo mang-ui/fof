@@ -115,6 +115,7 @@ window.SITE = {
   // inside = 인게임 3개 (탐색 · 협력 · 수집) → 슬라이드 카드 / behind = 다큐멘테이션 1개 → 넓은 카드
   // thumb/hero 가 영상이면 poster 이미지가 로딩 전 대기 화면이 된다
   // credits: 파트별 MAIN(주 담당) / SUB(참여). 기사 상단 바이라인은 MAIN으로 자동 생성
+  //          main 없이 sub만 있는 파트도 된다 (바이라인에는 안 나옴)
   //          파트 순서는 제작 파이프라인 순 — 기획 → 시나리오 → 아트 → 레벨 → AI NPC → 시네마틱
   tracks: { inside: "Inside the Game", behind: "Documentation" },
   articles: [
@@ -124,7 +125,7 @@ window.SITE = {
       t: "부서진 위버호를 걷다", d: "1층 엔진실에서 2층 기계실까지. 무너진 함선을 누비며 길과 단서를 찾는다.",
       thumb: "assets/video/loop-explore.mp4", hero: "assets/video/loop-explore.mp4", poster: "assets/img/shot-corridor.jpg",
       credits: [
-        { part: "플레이 흐름", main: [ { n: "이정희", w: "플레이 흐름 · 레벨 루프 설계" } ],
+        { part: "플레이 흐름 · UX", main: [ { n: "이정희", w: "튜토리얼 · 레벨 진행 구조 · 목표 안내 · 플레이어 동선 설계" } ],
           sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] },
         { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] }
       ],
@@ -158,7 +159,7 @@ window.SITE = {
       t: "셋이어야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
-        { part: "인터랙션 기획", main: [ { n: "이정희", w: "캐릭터 인터랙션 기획 · 구현" } ] },
+        { part: "게임 시스템", main: [ { n: "이정희", w: "캐릭터 전환 · AI 추적 시스템 · 오브젝트 상호작용" } ] },
         { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 다이얼로그 시스템" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] }
       ],
@@ -179,7 +180,7 @@ window.SITE = {
         ] },
         { type: "h", text: "말을 거는 동료, 레프" },
         { type: "p", text: "플레이어와 동행하는 NPC 레프에 AI 다이얼로그 시스템을 적용해, 플레이 상황에 맞는 다양한 대사를 생성하도록 했다. 같은 공간에서도 플레이어마다 서로 다른 경험을 하게 되고, 기존 게임의 결정론적 대사보다 생동감 있는 반응을 느낄 수 있다." },
-        { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 레프의 대사" },
+        { type: "video", src: "assets/video/npc-ai.mp4", cap: "AI NPC 레프 — 인게임 시연" },
         { type: "p", text: "[본문 이어서 — 레프의 성격 설계, 전시 환경(네트워크 불안정) 대응 등]" }
       ]
     },
@@ -189,7 +190,7 @@ window.SITE = {
       thumb: "assets/video/loop-collect.mp4", hero: "assets/video/loop-collect.mp4", poster: "assets/img/family-photo.jpg",
       credits: [
         { part: "시나리오", main: [ { n: "김지숙", w: "시나리오" } ] },
-        { part: "수집 요소", main: [ { n: "이정희", w: "수집 요소 기획 · 구현" } ] }
+        { part: "상호작용", main: [ { n: "이정희", w: "오브젝트 상호작용 구현 · 시스템 간 연계" } ] }
       ],
       readTime: "4분",
       facts: [ { k: "ITEMS", v: "장난감 4개 → 환풍구 열쇠" }, { k: "THEME", v: "기억 · 가족 · 유대" } ],
@@ -216,13 +217,16 @@ window.SITE = {
       t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱, AI로 말하는 NPC까지. 네 명이 위버호를 만든 방법.",
       thumb: "assets/video/cine-ai.mp4", hero: "assets/video/cine-ai.mp4", poster: "assets/img/shot-earth-1.jpg",
       credits: [
-        { part: "기획 · UI/UX", main: [ { n: "이정희", w: "게임 기획 · UI · UX" } ] },
-        { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ] },
+        { part: "게임 시스템 · UX", main: [ { n: "이정희", w: "핵심 플레이 루프 · 퀘스트 시스템 · 시스템 통합 (Blueprint · Story Framework)" } ] },
+        { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ],
+          sub: [ { n: "이정희", w: "Ron 3D 모델링 · 리토폴로지 · Substance Painter 텍스처" } ] },
         { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
         { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
         { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
-          sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" } ] }
+          sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" },
+                 { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] },
+        { part: "플레이테스트", sub: [ { n: "이정희", w: "전시 플레이테스트로 UX 문제 파악 · 개선" } ] }
       ],
       readTime: "8분",
       facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
@@ -258,7 +262,7 @@ window.SITE = {
           { icon: "nodes", t: "판단", d: "상태에 맞는 질문 세트를 골라 AI에 보낸다." },
           { icon: "chat", t: "발화", d: "상황에 맞는 대사로 플레이어에게 말을 건다." }
         ] },
-        { type: "video", src: "assets/video/npc-ai.mp4", cap: "AI NPC 시스템 — 인게임 시연" },
+        { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 NPC 대사" },
         { type: "img", src: "", cap: "컨트롤 리그 세팅 / 블루프린트 화면 자리" },
         { type: "h", text: "네 명이 만든 위버호" },
         { type: "p", text: "[본문 자리 — 시행착오와 팀 이야기, 개발 현황 영상, 회의, 전시 현장 이야기]" },
@@ -308,7 +312,7 @@ window.SITE = {
       },
       {
         id: "jeonghee", n: "이정희", r: "Game Designer · UI/UX Designer", img: "",
-        parts: ["게임 기획", "레벨 루프", "UI · UX"],
+        parts: ["게임 시스템", "플레이 흐름 · UX", "상호작용 · 시스템 통합", "Ron 모델링 · 텍스처"],
         quote: "“각자 만든 레벨과 시네마틱, 인터랙션을 하나의 플레이 흐름으로.”",
         body: [
           "전체적인 게임 플레이 흐름과 레벨 루프를 설계하고, 플레이어의 진행을 돕는 시스템을 제작했다.",
