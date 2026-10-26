@@ -213,23 +213,19 @@ window.SITE = {
       ]
     },
     {
-      id: "making", track: "behind", sub: "Documentation",
-      t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱, AI로 말하는 NPC까지. 네 명이 위버호를 만든 방법.",
+      id: "cinematic", track: "behind", sub: "Documentation · Cinematic",
+      t: "AI로 찍은 시네마틱", d: "언리얼 엔진 장면을 AI 영상으로. 게임 화면과 시네마틱 사이의 이질감을 줄인 제작 방식.",
       thumb: "assets/video/cine-ai.mp4", hero: "assets/video/cine-ai.mp4", poster: "assets/img/shot-earth-1.jpg",
       credits: [
-        { part: "게임 시스템 · UX", main: [ { n: "이정희", w: "핵심 플레이 루프 · 퀘스트 시스템 · 시스템 통합 (Blueprint · Story Framework)" } ] },
         { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ],
           sub: [ { n: "이정희", w: "Ron 3D 모델링 · 리토폴로지 · Substance Painter 텍스처" } ] },
         { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
-          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
         { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
           sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" },
-                 { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] },
-        { part: "플레이테스트", sub: [ { n: "이정희", w: "전시 플레이테스트로 UX 문제 파악 · 개선" } ] }
+                 { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] }
       ],
-      readTime: "8분",
-      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
+      readTime: "6분",
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
       blocks: [
         { type: "video", src: "https://youtu.be/bSGboK4WxNQ", cap: "FOF home://error — 다큐멘테이션 영상" },
         { type: "p", text: "언리얼 엔진 5와 AI를 결합한 하이브리드 시네마틱 제작 방식을 썼다. 언리얼 엔진에서 카메라 구도와 장면을 구성한 뒤, 이를 스틸컷으로 추출해 AI 영상으로 생성한다. 시네마틱 제작 효율을 높이는 동시에, 실제 게임 플레이 화면과 시네마틱 영상 사이의 시각적 이질감을 줄이기 위해서다. 여기에 NPC 대사까지 AI로 연동했다." },
@@ -241,18 +237,7 @@ window.SITE = {
           { icon: "camera", tool: "UE5 + AI VIDEO", t: "시네마틱 통합", d: "엔진 시퀀스와 AI 영상을 하나의 흐름으로 잇는다." }
         ] },
         { type: "video", src: "assets/video/making-ron-rig.mp4", cap: "Ron 리깅 — 언리얼 엔진 테스트" },
-        { type: "h", text: "블루프린트로 만든 시스템" },
-        { type: "p", text: "퀘스트와 상호작용, 홀로그램 연출은 모두 언리얼 엔진 블루프린트로 구현했다. 탐색 · 협력 · 수집 루프를 움직이는 시스템들이다." },
-        { type: "video", src: "assets/video/bp-quest.mp4", cap: "퀘스트 시스템 — Story Framework 기반" },
-        { type: "pair", items: [
-          { src: "assets/video/bp-magnetic.mp4", cap: "마그네틱 시스템" },
-          { src: "assets/video/bp-holo-family.mp4", cap: "홀로그램 가족 — Niagara" }
-        ] },
-        { type: "pair", items: [
-          { src: "assets/video/bp-butterfly.mp4", cap: "홀로그램 나비 — 다음 목적지 안내" },
-          { src: "assets/video/bp-flashback.mp4", cap: "플래시백 헬퍼 — 기억 연출" }
-        ] },
-        { type: "h", text: "AI로 찍은 시네마틱" },
+        { type: "h", text: "시네마틱 제작 과정" },
         { type: "p", text: "많은 시간이 소요되는 시네마틱 제작 과정에 AI 영상 생성 도구를 적극적으로 도입했다. 카메라의 앵글과 조명, 인물의 동작까지 프롬프트로 세밀하게 디렉팅하며 장면을 구현했고, 언리얼 엔진으로 만든 게임 화면과 시네마틱이 하나의 작품처럼 느껴지도록 톤앤매너를 맞추는 데 집중했다." },
         { type: "workflow", title: "시네마틱 제작 워크플로우", steps: [
           { icon: "edit", tool: "SCENARIO", t: "시나리오", d: "장면이 관객에게 어떤 감정으로 전달될지 설계한다." },
@@ -269,6 +254,26 @@ window.SITE = {
           { icon: "branch", t: "분기", d: "UI 선택지에 따라 갈리는 장면." }
         ] },
         { type: "compare", a: { src: "", cap: "STORYBOARD" }, b: { src: "", cap: "AI GENERATED" } },
+        { type: "h", text: "네 명이 만든 위버호" },
+        { type: "p", text: "[본문 자리 — 시행착오와 팀 이야기, 개발 현황 영상, 회의, 전시 현장 이야기]" },
+        { type: "video", src: "assets/video/making-proto-level.mp4", cap: "프로토 레벨과 초기 캐릭터" }
+      ]
+    },
+    {
+      id: "system", track: "behind", sub: "Documentation · AI NPC & System",
+      t: "말하는 NPC, 움직이는 시스템", d: "AI 다이얼로그로 말을 거는 레프와, 탐색 · 협력 · 수집 루프를 돌리는 블루프린트 시스템.",
+      thumb: "assets/video/npc-ai.mp4", hero: "assets/video/npc-ai.mp4", poster: "assets/img/lef-wide.jpg",
+      credits: [
+        { part: "게임 시스템 · UX", main: [ { n: "이정희", w: "핵심 플레이 루프 · 퀘스트 시스템 · 시스템 통합 (Blueprint · Story Framework)" } ],
+          sub: [ { n: "김영은", w: "마그네틱 시스템 · 홀로그램 시스템" } ] },
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
+          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
+        { part: "플레이테스트", sub: [ { n: "이정희", w: "전시 플레이테스트로 UX 문제 파악 · 개선" } ] }
+      ],
+      readTime: "4분",
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "SYSTEM", v: "Blueprint · Story Framework" } ],
+      blocks: [
+        { type: "p", text: "플레이어 곁에서 말을 거는 NPC와, 탐색 · 협력 · 수집 루프를 돌리는 시스템들. 모두 언리얼 엔진 블루프린트와 AI 다이얼로그로 구현했다." },
         { type: "h", text: "AI NPC 다이얼로그" },
         { type: "pictos", items: [
           { icon: "eye", t: "관찰", d: "플레이어의 행동과 위치를 상태값으로 읽는다." },
@@ -277,9 +282,16 @@ window.SITE = {
         ] },
         { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 NPC 대사" },
         { type: "video", src: "assets/video/bp-lef-ai.mp4", cap: "레프 AI 블루프린트" },
-        { type: "h", text: "네 명이 만든 위버호" },
-        { type: "p", text: "[본문 자리 — 시행착오와 팀 이야기, 개발 현황 영상, 회의, 전시 현장 이야기]" },
-        { type: "video", src: "assets/video/making-proto-level.mp4", cap: "프로토 레벨과 초기 캐릭터" }
+        { type: "h", text: "블루프린트로 만든 시스템" },
+        { type: "video", src: "assets/video/bp-quest.mp4", cap: "퀘스트 시스템 — Story Framework 기반" },
+        { type: "pair", items: [
+          { src: "assets/video/bp-magnetic.mp4", cap: "마그네틱 시스템" },
+          { src: "assets/video/bp-holo-family.mp4", cap: "홀로그램 가족 — Niagara" }
+        ] },
+        { type: "pair", items: [
+          { src: "assets/video/bp-butterfly.mp4", cap: "홀로그램 나비 — 다음 목적지 안내" },
+          { src: "assets/video/bp-flashback.mp4", cap: "플래시백 헬퍼 — 기억 연출" }
+        ] },
       ]
     }
   ],

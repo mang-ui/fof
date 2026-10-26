@@ -51,7 +51,7 @@
   const Slider = list => `
     <div class="slider">
       <button class="sl-btn sl-prev" type="button" aria-label="이전 카드" hidden>${arrow("M15 5l-7 7 7 7")}</button>
-      <div class="slides">${list.map(Story).join("")}</div>
+      <div class="slides" style="--n:${Math.min(list.length, 3)}">${list.map(Story).join("")}</div>
       <button class="sl-btn sl-next" type="button" aria-label="다음 카드" hidden>${arrow("M9 5l7 7-7 7")}</button>
     </div>`;
   // 넘칠 때만 화살표를 보이고, 누르면 카드 한 장만큼 민다
