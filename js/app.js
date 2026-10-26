@@ -37,10 +37,14 @@
 
   /* ---------- 픽토그램 그리드 ---------- */
   const Pictos = items => `
-    <div class="pictos">
-      ${items.map((p, i) => `
-        <div class="picto">${icon(p.icon)}<span class="n">${pad(i + 1)}</span><b>${p.t}</b><p>${p.d}</p></div>`).join("")}
+    <div class="pictos${items.length === 3 ? " three" : ""}">
+      ${items.map((p, i) => p.go
+        ? `<a class="picto" href="#/game/${p.go}">${icon(p.icon)}<span class="n">${pad(i + 1)}</span><b>${p.t}</b><p>${p.d}</p><span class="more">${(C.articles.find(a => a.id === p.go) || {}).t || "기사"}</span></a>`
+        : `<div class="picto">${icon(p.icon)}<span class="n">${pad(i + 1)}</span><b>${p.t}</b><p>${p.d}</p></div>`).join("")}
     </div>`;
+
+  /* ---------- 플레이 루프 키워드 칩 ---------- */
+  const Keys = a => a.keys && a.keys.length ? `<div class="keys">${a.keys.map(k => `<span class="key">${k}</span>`).join("")}</div>` : "";
 
   /* ---------- 기사 본문 블록 ---------- */
   function Block(b, idx) {
@@ -182,7 +186,7 @@
           <div class="stories">
             ${C.articles.filter(a => a.track === key).map(a => `
               <a class="story" href="#/game/${a.id}">${media(a.thumb, "", a.sub.toUpperCase())}
-              <div class="label">${a.sub}</div><h3>${a.t}</h3><p>${a.d}</p><span class="more">기사 읽기</span></a>`).join("")}
+              <div class="label">${a.sub}</div>${Keys(a)}<h3>${a.t}</h3><p>${a.d}</p><span class="more">기사 읽기</span></a>`).join("")}
           </div>`).join("")}
       </section>
 
@@ -219,6 +223,7 @@
         <header class="art-head">
           <a class="back" href="#/game">본지로</a>
           <div class="label">${pad(i + 1)} — ${a.sub}</div>
+          ${Keys(a)}
           <h1>${a.t}</h1>
           <p class="deck">${a.d}</p>
           <div class="byline"><span class="label">${a.byline || ""}</span>${a.readTime ? `<span class="label">읽는 시간 ${a.readTime}</span>` : ""}</div>
