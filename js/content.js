@@ -16,8 +16,10 @@ window.SITE = {
   version: "v4",                            // 배포 버전 (zip 번호와 동일)
   title: "FOF",
   subtitle: "home://error",
-  issue: "Exhibition Issue · 2026",
-  exhibit: "2026 전시 · 부스 A-00",          // TODO: 코엑스/킨텍스 확정되면 수정
+  issue: "Exhibition Issue · 2026.11",
+  exhibit: "NCA AI Creator Showcase · 부스 404",
+  // 전시 정보 — 당신(YOU) 페이지의 입장권에 쓰인다. [출처] 라이팅 배너
+  booth: { host: "NCA", show: "AI CREATOR SHOWCASE", code: "404", dates: "2026.11.12 — 11.14", play: "약 15분" },
   siteUrl: "https://mang-ui.github.io/fof/",
   credit: "© 2026 TEAM FIVEGUYS. All Rights Reserved.",
   links: [
@@ -228,7 +230,7 @@ window.SITE = {
                  { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] }
       ],
       readTime: "6분",
-      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "NCA AI Creator Showcase · 11.12–14" } ],
       blocks: [
         { type: "video", src: "https://youtu.be/bSGboK4WxNQ", cap: "FOF home://error — 다큐멘테이션 영상" },
         { type: "p", text: "언리얼 엔진 5와 AI를 결합한 하이브리드 시네마틱 제작 방식을 썼다. 언리얼 엔진에서 카메라 구도와 장면을 구성한 뒤, 이를 스틸컷으로 추출해 AI 영상으로 생성한다. 시네마틱 제작 효율을 높이는 동시에, 실제 게임 플레이 화면과 시네마틱 영상 사이의 시각적 이질감을 줄이기 위해서다. 여기에 NPC 대사까지 AI로 연동했다." },
@@ -355,7 +357,7 @@ window.SITE = {
         parts: ["탐색", "발견", "선택"],
         quote: "“유저의 선택과 탐색이라는 행위 그 자체가 곧 하나의 이야기를 완성한다.”",
         body: ["FIVEGUYS의 마지막 멤버는 이 게임을 플레이하는 사람이다. 네 명이 위버호를 만들었고, 그 안에 흩어진 기억을 발견해 이야기를 완성하는 건 다섯 번째 멤버의 몫이다."],
-        now: { t: "부스에서 플레이하기", d: "현장 안내 문구 자리 (부스 위치, 대기 방법 등)" },
+        now: { t: "부스 404에서 플레이하기", d: "11월 12일부터 14일까지, NCA AI Creator Showcase. 한 번 플레이에 약 15분이면 위버호를 끝까지 걸어볼 수 있다." },
         later: { t: "방명록에 이름 남기기", d: "서버 연결 후 활성화 예정" }
       }
     ]
