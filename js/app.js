@@ -43,6 +43,36 @@
         : `<div class="picto">${icon(p.icon)}<span class="n">${pad(i + 1)}</span><b>${p.t}</b><p>${p.d}</p></div>`).join("")}
     </div>`;
 
+  /* ---------- 기사 카드 · 슬라이더 ---------- */
+  const Story = a => `
+    <a class="story" href="#/game/${a.id}">${media(a.thumb, "", a.sub.toUpperCase(), { poster: a.poster })}
+    <div class="story-text"><div class="label">${a.sub}</div>${Keys(a)}<h3>${a.t}</h3><p>${a.d}</p><span class="more">기사 읽기</span></div></a>`;
+  const arrow = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
+  const Slider = list => `
+    <div class="slider">
+      <button class="sl-btn sl-prev" type="button" aria-label="이전 카드" hidden>${arrow("M15 5l-7 7 7 7")}</button>
+      <div class="slides">${list.map(Story).join("")}</div>
+      <button class="sl-btn sl-next" type="button" aria-label="다음 카드" hidden>${arrow("M9 5l7 7-7 7")}</button>
+    </div>`;
+  // 넘칠 때만 화살표를 보이고, 누르면 카드 한 장만큼 민다
+  function initSliders() {
+    document.querySelectorAll(".slider").forEach(sl => {
+      const row = sl.querySelector(".slides"), prev = sl.querySelector(".sl-prev"), next = sl.querySelector(".sl-next");
+      const step = () => (row.firstElementChild?.offsetWidth || row.clientWidth) + parseFloat(getComputedStyle(row).columnGap || 0);
+      const sync = () => {
+        const ph = row.querySelector(".ph");   // 화살표는 영상 박스 세로 가운데
+        if (ph) prev.style.top = next.style.top = ph.offsetTop + ph.offsetHeight / 2 + "px";
+        prev.hidden = row.scrollLeft <= 4;
+        next.hidden = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+      };
+      prev.onclick = () => row.scrollBy({ left: -step(), behavior: "smooth" });
+      next.onclick = () => row.scrollBy({ left: step(), behavior: "smooth" });
+      row.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      sync();
+    });
+  }
+
   /* ---------- 플레이 루프 키워드 칩 ---------- */
   const Keys = a => a.keys && a.keys.length ? `<div class="keys">${a.keys.map(k => `<span class="key">${k}</span>`).join("")}</div>` : "";
 
@@ -183,13 +213,12 @@
       <section class="feature">
         <div class="label">Features</div>
         <h2>더 깊이 읽기</h2>
-        ${Object.entries(C.tracks).map(([key, name], ti) => `
+        ${Object.entries(C.tracks).map(([key, name], ti) => {
+          const list = C.articles.filter(a => a.track === key);
+          return `
           <div class="track"><span class="label">Part ${"AB"[ti] || ti + 1}</span><h3>${name}</h3></div>
-          <div class="stories">
-            ${C.articles.filter(a => a.track === key).map(a => `
-              <a class="story" href="#/game/${a.id}">${media(a.thumb, "", a.sub.toUpperCase())}
-              <div class="label">${a.sub}</div>${Keys(a)}<h3>${a.t}</h3><p>${a.d}</p><span class="more">기사 읽기</span></a>`).join("")}
-          </div>`).join("")}
+          ${list.length > 1 ? Slider(list) : `<div class="stories one">${list.map(Story).join("")}</div>`}`;
+        }).join("")}
       </section>
 
       <section class="feature" id="team-sec">
@@ -230,7 +259,7 @@
           <p class="deck">${a.d}</p>
           <div class="byline"><span class="label">${a.byline || ""}</span>${a.readTime ? `<span class="label">읽는 시간 ${a.readTime}</span>` : ""}</div>
         </header>
-        ${media(a.hero, "art-hero", "HERO")}
+        ${media(a.hero, "art-hero", "HERO", { poster: a.poster })}
         <div class="art-body">
           <div class="body">${(a.blocks || []).map(Block).join("")}</div>
           ${a.facts && a.facts.length ? `
@@ -299,7 +328,7 @@
     app.style.animation = "none"; void app.offsetWidth; app.style.animation = "";
     const mag = a === "game" && document.getElementById("mag");
     window.scrollTo({ top: mag ? mag.offsetTop : 0, behavior: "instant" });
-    if (home) startReel();
+    if (home) { startReel(); initSliders(); }
   }
   const isHome = () => { const [a, b] = location.hash.replace(/^#\/?/, "").split("/"); return !a || (a === "game" && !b); };
   window.addEventListener("hashchange", route);
