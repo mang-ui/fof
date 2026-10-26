@@ -74,7 +74,7 @@ window.SITE = {
       { k: "SHIP", v: "위버호 · 30년 항해" },
       { k: "OPERATOR", v: "프런티어 엔터프라이스" }
     ],
-    img: "assets/img/earth-catchball.jpg"
+    img: "assets/video/world.mp4", poster: "assets/img/earth-catchball.jpg"
   },
 
   /* ---------- 플레이 방법 (픽토그램) ---------- */
@@ -96,16 +96,16 @@ window.SITE = {
   // [출처] 텍스트 뭉치 1026 > 캐릭터
   characters: [
     { name: "Ron", kr: "론", role: "COMPANION ROBOT",
-      desc: "지구에서부터 위버 가족과 함께 살아온 작은 반려로봇. 폭풍 사고로 기억 일부를 잃었지만 올리를 지켜야 한다는 마음만은 남아 있으며, 가슴의 푸른 LED 모듈 안에는 가족의 기억이 담겨 있다.", img: "assets/img/char-ron.jpg" },
+      desc: "지구에서부터 위버 가족과 함께 살아온 작은 반려로봇. 폭풍 사고로 기억 일부를 잃었지만 올리를 지켜야 한다는 마음만은 남아 있으며, 가슴의 푸른 LED 모듈 안에는 가족의 기억이 담겨 있다.", img: "assets/video/turntable-ron.mp4", poster: "assets/img/char-ron.jpg" },
     { name: "Fix", kr: "F-404", role: "EXPLORATION & REPAIR",
-      desc: "프런티어 관제센터가 위버호에 보낸 대형 수리 로봇. 말수는 적지만 다정한 성격으로, 강한 힘으로 무너진 길을 열어 동료를 돕는다. 명령에 따라 움직이던 로봇에서 점차 스스로 판단해 론을 지키는 존재로 변해 간다.", img: "assets/img/char-fix.jpg" },
+      desc: "프런티어 관제센터가 위버호에 보낸 대형 수리 로봇. 말수는 적지만 다정한 성격으로, 강한 힘으로 무너진 길을 열어 동료를 돕는다. 명령에 따라 움직이던 로봇에서 점차 스스로 판단해 론을 지키는 존재로 변해 간다.", img: "assets/video/turntable-fix.mp4", poster: "assets/img/char-fix.jpg" },
     { name: "Lef", kr: "레프", role: "SUPPORT UNIT",
-      desc: "F-404와 함께 파견된 작고 빠른 드론형 보조 로봇. 스캔과 통신, 지도 투사에 능하지만 손이 없어 늘 F-404에게 의지한다. 말이 많고 툴툴대지만, 결국 론을 회수품이 아닌 동료로 받아들인다.", img: "assets/img/char-lef.jpg" }
+      desc: "F-404와 함께 파견된 작고 빠른 드론형 보조 로봇. 스캔과 통신, 지도 투사에 능하지만 손이 없어 늘 F-404에게 의지한다. 말이 많고 툴툴대지만, 결국 론을 회수품이 아닌 동료로 받아들인다.", img: "assets/video/turntable-lef.mp4", poster: "assets/img/char-lef.jpg" }
   ],
   subCharacters: [
-    { name: "헨리 위버", role: "FATHER · SCIENTIST", desc: "테라포밍 계획과 판타스마 에센스 기술을 이끈 과학자. 홀로 남을 론이 외롭지 않도록, 가족의 기억을 론과 함께 완성되는 형태로 남겼다.", img: "assets/img/sub-henry.jpg" },
-    { name: "캐서린 위버", role: "MOTHER", desc: "론을 로봇이 아닌 가족의 일원으로 대하는 따뜻한 사람. 론이 혼자 남겨졌다고 느끼지 않기를 누구보다 바랐다.", img: "assets/img/sub-catherine.jpg" },
-    { name: "올리 위버", role: "SON", desc: "장난기 많고 순수한 여섯 살. 론을 처음부터 동생으로 받아들였고, 론에게 ‘가족’이라는 감각을 가장 가까이에서 남겼다.", img: "assets/img/sub-ollie.jpg" }
+    { name: "헨리 위버", role: "FATHER · SCIENTIST", desc: "테라포밍 계획과 판타스마 에센스 기술을 이끈 과학자. 홀로 남을 론이 외롭지 않도록, 가족의 기억을 론과 함께 완성되는 형태로 남겼다.", img: "assets/video/sub-henry.mp4", poster: "assets/img/sub-henry.jpg" },
+    { name: "캐서린 위버", role: "MOTHER", desc: "론을 로봇이 아닌 가족의 일원으로 대하는 따뜻한 사람. 론이 혼자 남겨졌다고 느끼지 않기를 누구보다 바랐다.", img: "assets/video/sub-catherine.mp4", poster: "assets/img/sub-catherine.jpg" },
+    { name: "올리 위버", role: "SON", desc: "장난기 많고 순수한 여섯 살. 론을 처음부터 동생으로 받아들였고, 론에게 ‘가족’이라는 감각을 가장 가까이에서 남겼다.", img: "assets/video/sub-ollie.mp4", poster: "assets/img/sub-ollie.jpg" }
   ],
 
   /* ---------- 더 깊이 읽기 (기사) ----------
