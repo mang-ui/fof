@@ -73,6 +73,17 @@
     });
   }
 
+  /* ---------- 크레딧: 파트별 MAIN / SUB ---------- */
+  const Byline = a => (a.credits || []).map(c => `${c.part} · ${c.main.map(p => p.n).join(", ")}`).join(" / ");
+  const Credits = a => !a.credits ? "" : `
+    <div class="label credits-head">Credits</div>
+    <div class="credits">${a.credits.map(c => `
+      <div class="cr"><b>${c.part}</b>
+        ${[...c.main.map(p => [p, "MAIN"]), ...(c.sub || []).map(p => [p, "SUB"])].map(([p, tag]) => `
+        <p><span class="role-tag${tag === "MAIN" ? " main" : ""}">${tag}</span>${p.n}${p.w ? `<small>${p.w}</small>` : ""}</p>`).join("")}
+      </div>`).join("")}
+    </div>`;
+
   /* ---------- 플레이 루프 키워드 칩 ---------- */
   const Keys = a => a.keys && a.keys.length ? `<div class="keys">${a.keys.map(k => `<span class="key">${k}</span>`).join("")}</div>` : "";
 
@@ -257,15 +268,16 @@
           ${Keys(a)}
           <h1>${a.t}</h1>
           <p class="deck">${a.d}</p>
-          <div class="byline"><span class="label">${a.byline || ""}</span>${a.readTime ? `<span class="label">읽는 시간 ${a.readTime}</span>` : ""}</div>
+          <div class="byline"><span class="label">${a.byline || Byline(a)}</span>${a.readTime ? `<span class="label">읽는 시간 ${a.readTime}</span>` : ""}</div>
         </header>
         ${media(a.hero, "art-hero", "HERO", { poster: a.poster })}
         <div class="art-body">
           <div class="body">${(a.blocks || []).map(Block).join("")}</div>
-          ${a.facts && a.facts.length ? `
+          ${(a.facts && a.facts.length) || a.credits ? `
           <aside class="aside">
-            <div class="label">Fact Sheet</div>
-            <dl>${a.facts.map(f => `<dt>${f.k}</dt><dd>${f.v}</dd>`).join("")}</dl>
+            ${a.facts && a.facts.length ? `<div class="label">Fact Sheet</div>
+            <dl>${a.facts.map(f => `<dt>${f.k}</dt><dd>${f.v}</dd>`).join("")}</dl>` : ""}
+            ${Credits(a)}
           </aside>` : ""}
         </div>
         <a class="next" href="#/game/${nx.id}"><span class="label">Next Story</span><div class="t">${nx.t}</div></a>
