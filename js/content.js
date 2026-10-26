@@ -73,14 +73,15 @@ window.SITE = {
   },
 
   /* ---------- 플레이 방법 (픽토그램) ---------- */
+  // 플레이 루프 키워드 3개 = 탐색 · 협력 · 수집
+  // go: 누르면 열리는 Inside the Game 기사 id / 같은 키워드가 기사 keys에도 들어간다
   // [출처] 다큐멘테이션용 시트 > 나레이션 1, 시나리오 > 기억수집
   howToPlay: {
     head: "플레이 방법",
     items: [
-      { icon: "wrench", t: "수리 — Fix", d: "손상된 구역을 수리해 새로운 길을 연다." },
-      { icon: "robot", t: "탐색 · 기억 — Ron", d: "공간의 오브젝트와 상호작용해 숨겨진 가족의 기억을 깨운다." },
-      { icon: "swap", t: "번갈아 조작", d: "같은 공간도 어떤 로봇으로 접근하느냐에 따라 다른 경험이 된다." },
-      { icon: "memory", t: "기억 수집", d: "오브젝트를 발견하면 짧은 홀로그램 기억이 재생된다." }
+      { icon: "compass", t: "탐색", d: "항성 폭풍에 부서진 위버호를 층마다 누비며 앞으로 나아갈 길을 찾는다.", go: "flow" },
+      { icon: "swap", t: "협력", d: "Fix가 무너진 길을 열고 Ron이 공간을 살핀다. 두 로봇을 번갈아 조작하고, 레프가 곁에서 말을 건다.", go: "companion" },
+      { icon: "memory", t: "수집", d: "오브젝트를 발견하면 흩어진 가족의 기억이 홀로그램으로 깨어난다.", go: "flow" }
     ]
   },
 
@@ -107,13 +108,13 @@ window.SITE = {
   tracks: { inside: "Inside the Game", behind: "Behind the Scenes" },
   articles: [
     {
-      id: "weaver", track: "inside", sub: "World & Level",
-      t: "위버호, 네 개의 층", d: "항성 폭풍에 부서진 선발 이주선. 층마다 다른 기억이 잠들어 있다.",
-      thumb: "assets/img/shot-corridor.jpg", hero: "assets/img/shot-corridor.jpg", byline: "레벨 · 윤동혁 / 기획 · 이정희", readTime: "4분",
-      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F · 3F" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 이정희" } ],
+      id: "flow", track: "inside", sub: "Play Flow", keys: ["탐색", "수집"],
+      t: "플레이 흐름", d: "부서진 위버호의 네 개 층을 지나며, 곳곳에 흩어진 가족의 기억을 되찾는 길.",
+      thumb: "assets/img/shot-corridor.jpg", hero: "assets/img/shot-corridor.jpg", byline: "레벨 · 윤동혁 / 시나리오 · 김지숙 / 기획 · 이정희", readTime: "6분",
+      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F · 3F" }, { k: "CHAPTERS", v: "프롤로그 + 5챕터" }, { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 김지숙 · 이정희" } ],
       blocks: [
         { type: "p", text: "항성 폭풍으로 항로를 이탈한 위버호. 붉은 비상등과 꺼져가는 차폐막의 푸른빛만이 어둠 속에서 깜빡인다. 레벨은 시나리오와 컨셉아트의 분위기에 맞춰 구성하되, 너무 인위적이지 않으면서도 플레이어가 목표를 쉽게 찾을 수 있도록 설계했다." },
-        { type: "h", text: "층별 구조" },
+        { type: "h", text: "탐색 — 층별 구조" },
         { type: "pictos", items: [
           { icon: "door", t: "1F", d: "입구 · 기계실 · 테라리움" },
           { icon: "layers", t: "1.5F", d: "책장 뒤에 숨겨진 가족 수면실" },
@@ -129,14 +130,25 @@ window.SITE = {
           { icon: "heart", tool: "CH.4 · 1.5F", t: "네 가슴에 있는 기억", d: "가족 수면실로 향한다." },
           { icon: "ship", tool: "CH.5 · 1F", t: "위버호를 탈출하라", d: "붕괴 경보 속에서 내리는 선택." }
         ] },
-        { type: "p", text: "[본문 이어서 — 레벨 제작 과정, 모듈러 구성, 라이팅 등]" }
+        { type: "h", text: "수집 — 기억을 깨우는 물건들" },
+        { type: "p", text: "함선 곳곳의 오브젝트 하나가 기억 하나를 깨운다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
+        { type: "pictos", items: [
+          { icon: "belt", t: "비상 벨트 끈", d: "프롤로그의 마지막 순간으로." },
+          { icon: "figure", t: "목재 우주인 피규어", d: "올리의 홀로그램." },
+          { icon: "pen", t: "헨리의 펜", d: "전력실에 남은 헨리의 홀로그램." },
+          { icon: "book", t: "《BUILDING A HOUSE》", d: "숨겨진 문을 여는 단서." }
+        ] },
+        { type: "img", src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
+        { type: "img", src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" },
+        { type: "pull", text: "“이렇게 잡고 던지면 돼. 한번 던져봐!”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 캐서린, 캐치볼 플래시백</small>" },
+        { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분, 레벨 제작 과정 등]" }
       ]
     },
     {
-      id: "companion", track: "inside", sub: "AI Companion",
-      t: "말을 거는 동료", d: "플레이 상황에 따라 대사가 달라지는 AI NPC 다이얼로그 시스템.",
-      thumb: "assets/img/lef-wide.jpg", hero: "assets/img/lef-wide.jpg", byline: "AI NPC · 윤동혁", readTime: "4분",
-      facts: [ { k: "SYSTEM", v: "AI 다이얼로그" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁" } ],
+      id: "companion", track: "inside", sub: "AI Companion", keys: ["협력"],
+      t: "말을 거는 동료", d: "플레이 상황에 따라 레프의 대사가 달라지는 AI NPC 다이얼로그 시스템.",
+      thumb: "assets/img/lef-wide.jpg", hero: "assets/img/lef-wide.jpg", byline: "AI NPC · 윤동혁 / Lef 모델링 · 김영은", readTime: "4분",
+      facts: [ { k: "SYSTEM", v: "AI 다이얼로그" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 김영은" } ],
       blocks: [
         { type: "p", text: "더 풍부한 사용자 경험을 위해, 플레이 상황에 따라 출력될 NPC 대사에 AI를 연동해 다이얼로그 시스템을 구축했다. 기존 게임의 결정론적 경험보다 더 생동감 있는 반응을 느낄 수 있도록 하는 것이 목표였다." },
         { type: "pictos", items: [
@@ -148,31 +160,20 @@ window.SITE = {
       ]
     },
     {
-      id: "memory", track: "inside", sub: "Narrative",
-      t: "흩어진 가족의 기억", d: "오브젝트 하나가 기억 하나를 깨운다. 발견하는 서사의 구조.",
-      thumb: "assets/img/family-photo.jpg", hero: "assets/img/earth-catchball.jpg", byline: "시나리오 · 김지숙 / 기획 · 이정희", readTime: "3분",
-      facts: [ { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "CREDIT", v: "김지숙 · 이정희" } ],
+      id: "pipeline", track: "behind", sub: "Pipeline & AI Cinematic",
+      t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱을 하나의 작품처럼 잇는 제작 방식.",
+      thumb: "assets/img/shot-earth-1.jpg", hero: "assets/img/shot-earth-2.jpg", byline: "시네마틱 · 김지숙 / 아트 · TA · 김영은 / AI NPC · 윤동혁", readTime: "7분",
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "CREDIT", v: "김지숙 · 김영은 · 윤동혁" } ],
       blocks: [
-        { type: "p", text: "이 게임은 기억과 가족, 그리고 유대라는 보편적인 감정을 다룬다. 여정의 끝에서 지나간 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺는다. 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 탄생하는 것 — 그것이 FOF가 전하고자 하는 메시지다." },
-        { type: "h", text: "기억을 깨우는 물건들" },
-        { type: "pictos", items: [
-          { icon: "belt", t: "비상 벨트 끈", d: "프롤로그의 마지막 순간으로." },
-          { icon: "figure", t: "목재 우주인 피규어", d: "올리의 홀로그램." },
-          { icon: "pen", t: "헨리의 펜", d: "전력실에 남은 헨리의 홀로그램." },
-          { icon: "book", t: "《BUILDING A HOUSE》", d: "숨겨진 문을 여는 단서." }
+        { type: "p", text: "언리얼 엔진 5로 밀도 높은 시네마틱 비주얼을 연출하고, 시간이 많이 드는 시네마틱 제작에는 AI를 도입해 ‘실시간 엔진과 AI 간 하이브리드 작업 방식’을 채택했다. 여기에 NPC 대사까지 AI로 연동했다." },
+        { type: "workflow", title: "파이프라인 개요", steps: [
+          { icon: "edit", tool: "PLANNING", t: "기획 · 시나리오", d: "플레이 흐름과 레벨 루프, 장면 구성을 설계한다." },
+          { icon: "image", tool: "Blender", t: "컨셉아트 · 캐릭터", d: "세계관 디자인 시트, 캐릭터 모델링과 턴테이블." },
+          { icon: "layers", tool: "UE5", t: "레벨 · 인터랙션", d: "레벨 구성, 퍼즐과 캐릭터 조작 피드백 구현." },
+          { icon: "nodes", tool: "UE5 + AI", t: "AI NPC 연동", d: "플레이 상황에 맞는 대사를 생성하는 다이얼로그 시스템." },
+          { icon: "camera", tool: "UE5 + AI VIDEO", t: "시네마틱 통합", d: "엔진 시퀀스와 AI 영상을 하나의 흐름으로 잇는다." }
         ] },
-        { type: "img", src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
-        { type: "img", src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" },
-        { type: "pull", text: "“이렇게 잡고 던지면 돼. 한번 던져봐!”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 캐서린, 캐치볼 플래시백</small>" },
-        { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분 등]" }
-      ]
-    },
-    {
-      id: "cinematic", track: "behind", sub: "AI Cinematic",
-      t: "AI로 찍은 시네마틱", d: "카메라 앵글, 조명, 인물의 동작까지 프롬프트로 디렉팅하다.",
-      thumb: "assets/img/shot-earth-1.jpg", hero: "assets/img/shot-earth-2.jpg", byline: "시네마틱 · 김지숙", readTime: "5분",
-      facts: [ { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "CREDIT", v: "김지숙" } ],
-      blocks: [
+        { type: "h", text: "AI로 찍은 시네마틱" },
         { type: "p", text: "많은 시간이 소요되는 시네마틱 제작 과정에 AI 영상 생성 도구를 적극적으로 도입했다. 카메라의 앵글과 조명, 인물의 동작까지 프롬프트로 세밀하게 디렉팅하며 장면을 구현했고, 언리얼 엔진으로 만든 게임 화면과 시네마틱이 하나의 작품처럼 느껴지도록 톤앤매너를 맞추는 데 집중했다." },
         { type: "workflow", title: "시네마틱 제작 워크플로우", steps: [
           { icon: "edit", tool: "SCENARIO", t: "시나리오", d: "장면이 관객에게 어떤 감정으로 전달될지 설계한다." },
@@ -189,23 +190,6 @@ window.SITE = {
           { icon: "branch", t: "분기", d: "UI 선택지에 따라 갈리는 장면." }
         ] },
         { type: "compare", a: { src: "", cap: "STORYBOARD" }, b: { src: "", cap: "AI GENERATED" } },
-        { type: "p", text: "[본문 이어서]" }
-      ]
-    },
-    {
-      id: "pipeline", track: "behind", sub: "Pipeline",
-      t: "실시간 엔진 × AI 하이브리드", d: "게임 화면과 영상 사이의 이질감을 줄이는 제작 파이프라인.",
-      thumb: "assets/img/char-fix.jpg", hero: "", byline: "글 · 담당자", readTime: "5분",
-      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "AI", v: "Higgsfield · Suno · AI 다이얼로그" } ],
-      blocks: [
-        { type: "p", text: "언리얼 엔진 5로 밀도 높은 시네마틱 비주얼을 연출하고, 시간이 많이 드는 시네마틱 제작에는 AI를 도입해 ‘실시간 엔진과 AI 간 하이브리드 작업 방식’을 채택했다. 여기에 NPC 대사까지 AI로 연동했다." },
-        { type: "workflow", title: "파이프라인 개요", steps: [
-          { icon: "edit", tool: "PLANNING", t: "기획 · 시나리오", d: "플레이 흐름과 레벨 루프, 장면 구성을 설계한다." },
-          { icon: "image", tool: "Blender", t: "컨셉아트 · 캐릭터", d: "세계관 디자인 시트, 캐릭터 모델링과 턴테이블." },
-          { icon: "layers", tool: "UE5", t: "레벨 · 인터랙션", d: "레벨 구성, 퍼즐과 캐릭터 조작 피드백 구현." },
-          { icon: "nodes", tool: "UE5 + AI", t: "AI NPC 연동", d: "플레이 상황에 맞는 대사를 생성하는 다이얼로그 시스템." },
-          { icon: "camera", tool: "UE5 + AI VIDEO", t: "시네마틱 통합", d: "엔진 시퀀스와 AI 영상을 하나의 흐름으로 잇는다." }
-        ] },
         { type: "img", src: "", cap: "컨트롤 리그 세팅 / 블루프린트 화면 자리" },
         { type: "p", text: "[본문 이어서]" }
       ]
