@@ -16,6 +16,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+/* 세계관 섹션의 100vw 배경이 스크롤바 폭만큼 넘치는 것을 잘라낸다 (clip은 sticky 헤더를 깨지 않음) */
+html,body{overflow-x:clip}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ol,ul{list-style:none}
@@ -125,7 +127,7 @@ ol,ul{list-style:none}
 .world-facts div{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .world-facts dt{font:500 10px var(--mono);letter-spacing:.12em;color:rgba(238,242,242,.5)}
 .world-facts dd{font-family:var(--serif);font-size:20px;font-weight:700;margin-top:4px}
-.world-img{aspect-ratio:21/9;margin-top:32px}
+.world-img{aspect-ratio:16/9;margin-top:32px}
 
 /* 픽토그램 */
 .pictos{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
@@ -158,7 +160,7 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .cast-sub{margin-top:36px;border-top:1px solid var(--rule);padding-top:18px}
 .subs{display:grid;gap:12px;margin-top:14px}
 @media (min-width:700px){.subs{grid-template-columns:repeat(3,1fr)}}
-.sub{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center}
+.sub{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:center}
 .sub .ph{aspect-ratio:1;border-radius:50%}
 .sub b{font-family:var(--serif);font-size:18px;display:block;line-height:1.2}
 .sub .role{font:500 10px var(--mono);color:var(--accent);letter-spacing:.1em}
@@ -230,8 +232,7 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .art-head h1{font-family:var(--serif);font-weight:900;font-size:clamp(36px,6vw,72px);line-height:1.1;letter-spacing:-.025em;margin-top:10px}
 .art-head .deck{font-size:clamp(17px,1.8vw,21px);color:var(--muted);margin-top:16px}
 .byline{display:flex;gap:16px;margin-top:20px;padding-top:14px;border-top:1px solid var(--rule)}
-.art-hero{aspect-ratio:21/9}
-@media (max-width:700px){.art-hero{aspect-ratio:4/3}}
+.art-hero{aspect-ratio:16/9}
 .art-body{display:grid;gap:36px;padding:40px 0 56px}
 @media (min-width:900px){.art-body{grid-template-columns:minmax(0,1fr) 260px;gap:64px}}
 .art-body .body{max-width:680px;min-width:0}
@@ -240,6 +241,10 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .body > p + p{clear:none}
 .inline-fig{margin:28px 0}
 .inline-fig .ph{aspect-ratio:16/9}
+.inline-fig .ph.filled{aspect-ratio:auto}
+.inline-fig .ph.filled > img,.inline-fig .ph.filled > video{position:static;height:auto}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.pair .inline-fig{margin:0}
 .aside{border-top:2px solid var(--ink);padding-top:14px;align-self:start}
 @media (min-width:900px){.aside{position:sticky;top:76px}}
 .aside dl{display:grid;gap:14px;margin-top:12px}

@@ -97,6 +97,10 @@
       case "video":
         return `<figure class="inline-fig">${media(b.src, "", b.src ? "" : (b.type === "video" ? "VIDEO" : "IMAGE"), { poster: b.poster })}
           ${b.cap ? `<figcaption class="figcap"><span>${b.cap}</span></figcaption>` : ""}</figure>`;
+      // 세로 사진 두 장을 나란히 — 원본 비율 그대로, 자르지 않는다
+      case "pair":
+        return `<div class="pair">${b.items.map(it => `<figure class="inline-fig">${media(it.src, "", "IMAGE")}
+          ${it.cap ? `<figcaption class="figcap"><span>${it.cap}</span></figcaption>` : ""}</figure>`).join("")}</div>`;
       case "compare":
         return `<div class="compare">
           <figure>${media(b.a.src, "", "A")}<figcaption>${b.a.cap || "BEFORE"}</figcaption></figure>
