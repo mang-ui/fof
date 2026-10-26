@@ -22,19 +22,23 @@
     const isVideo = /\.(mp4|webm|mov)$/i.test(src);
     // 영상은 data-src로만 걸어두고, 화면에 들어올 때 받아서 재생한다 (initVideos)
     const inner = isVideo
-      ? `<video data-src="${src}" ${opt.poster ? `poster="${opt.poster}"` : ""} muted playsinline loop preload="none"${calm ? " controls" : ""}${alt ? ` aria-label="${alt}"` : ""}></video>`
+      ? `<video data-src="${src}" poster="${posterOf(src)}" muted playsinline loop preload="none"${alt ? ` aria-label="${alt}"` : ""}></video>`
       : `<img src="${src}" alt="${alt}" loading="lazy">`;
     return `<div class="ph filled ${cls || ""}">${inner}</div>`;
   }
+  // 유튜브면 "YouTube에서 보기" 링크 (임베드가 막힌 환경에서도 볼 수 있게)
+  const ytId = src => ((src || "").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/) || [])[1];
+  const ytLink = src => ytId(src) ? `<a class="yt-link" href="https://youtu.be/${ytId(src)}" target="_blank" rel="noopener">YouTube에서 보기 ↗</a>` : "";
   const esc = t => String(t).replace(/<[^>]+>/g, "").replace(/"/g, "&quot;");
+  // 대기 화면 = 그 영상의 첫 장면 (assets/video/a.mp4 → assets/poster/a.jpg). 로딩 전·후 화면이 같다
+  const posterOf = src => src.replace("assets/video/", "assets/poster/").replace(/\.(mp4|webm|mov)$/i, ".jpg");
 
   /* ---------- 영상: 보일 때만 받고 재생, 화면 밖으로 나가면 멈춤 ---------- */
-  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;   // 동작 줄이기 → 자동재생 대신 재생 버튼
   const io = "IntersectionObserver" in window ? new IntersectionObserver(entries => entries.forEach(e => {
     const v = e.target;
     if (e.isIntersecting) {
       if (!v.getAttribute("src")) v.src = v.dataset.src;
-      if (!calm) v.play().catch(() => {});
+      v.play().catch(() => {});   // 무음 반복 클립이라 '동작 줄이기' 설정이어도 자동 재생
     } else if (!v.paused) v.pause();
   }), { rootMargin: "200px 0px" }) : null;
   function initVideos() {
@@ -113,7 +117,7 @@
       case "img":
       case "video":
         return `<figure class="inline-fig">${media(b.src, "", b.src ? "" : (b.type === "video" ? "VIDEO" : "IMAGE"), { poster: b.poster, alt: b.cap })}
-          ${b.cap ? `<figcaption class="figcap"><span>${b.cap}</span></figcaption>` : ""}</figure>`;
+          ${b.cap || ytId(b.src) ? `<figcaption class="figcap"><span>${b.cap || ""}</span>${ytLink(b.src)}</figcaption>` : ""}</figure>`;
       // 세로 사진 두 장을 나란히 — 원본 비율 그대로, 자르지 않는다
       case "pair":
         return `<div class="pair">${b.items.map(it => `<figure class="inline-fig">${media(it.src, "", "IMAGE", { alt: it.cap })}
@@ -186,7 +190,7 @@
         <h1>${C.cover.title}</h1>
         <p class="deck">${C.cover.deck}</p>
         ${media(C.cover.trailer.src, "cover-img", "TRAILER", { poster: C.cover.trailer.poster, alt: C.cover.trailer.cap })}
-        <div class="figcap"><span>${C.cover.trailer.cap}</span><span>Fig. 01</span></div>
+        <div class="figcap"><span>${C.cover.trailer.cap}</span>${ytLink(C.cover.trailer.src) || "<span>Fig. 01</span>"}</div>
       </section>
 
       <section class="toc">
@@ -245,10 +249,12 @@
       <section class="feature">
         <div class="label">Features</div>
         <h2>더 깊이 읽기</h2>
-        ${Object.entries(C.tracks).map(([key, name], ti) => {
+        ${Object.entries(C.tracks).map(([key, name], ti, _, lead = C.trackLead || {}) => {
           const list = C.articles.filter(a => a.track === key);
           return `
           <div class="track"><span class="label">Part ${"AB"[ti] || ti + 1}</span><h3>${name}</h3></div>
+          ${lead[key] ? `<figure class="track-lead">${media(lead[key].src, "cover-img", "VIDEO", { alt: lead[key].cap })}
+            <figcaption class="figcap"><span>${lead[key].cap || ""}</span>${ytLink(lead[key].src)}</figcaption></figure>` : ""}
           ${list.length > 1 ? Slider(list) : `<div class="stories one">${list.map(Story).join("")}</div>`}`;
         }).join("")}
       </section>

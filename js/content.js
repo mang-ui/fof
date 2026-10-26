@@ -118,6 +118,8 @@ window.SITE = {
   //          main 없이 sub만 있는 파트도 된다 (바이라인에는 안 나옴)
   //          파트 순서는 제작 파이프라인 순 — 기획 → 시나리오 → 아트 → 레벨 → AI NPC → 시네마틱
   tracks: { inside: "Inside the Game", behind: "Documentation" },
+  // 파트 제목 바로 아래에 크게 거는 영상 (선택)
+  trackLead: { behind: { src: "https://youtu.be/bSGboK4WxNQ", cap: "FOF home://error — 다큐멘테이션 영상" } },
   articles: [
     {
       // [출처] FG_퀘스트리스트 > 퀘스트_세부정리 (인게임 기준. 3F가 있던 시나리오는 이전 버전)
@@ -127,7 +129,7 @@ window.SITE = {
       credits: [
         { part: "플레이 흐름 · UX", main: [ { n: "이정희", w: "튜토리얼 · 레벨 진행 구조 · 목표 안내 · 플레이어 동선 설계" } ],
           sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] },
-        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] }
+        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 70% 이상 제작 · 레벨 구성 · 디테일" } ] }
       ],
       readTime: "5분",
       facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" } ],
@@ -160,7 +162,7 @@ window.SITE = {
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
         { part: "게임 시스템", main: [ { n: "이정희", w: "캐릭터 전환 · AI 추적 시스템 · 오브젝트 상호작용" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 다이얼로그 시스템" } ],
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "동료 NPC AI 대화 구조 설계 · 구역 상태 시스템" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] }
       ],
       readTime: "5분",
@@ -181,7 +183,8 @@ window.SITE = {
         { type: "h", text: "말을 거는 동료, 레프" },
         { type: "p", text: "플레이어와 동행하는 NPC 레프에 AI 다이얼로그 시스템을 적용해, 플레이 상황에 맞는 다양한 대사를 생성하도록 했다. 같은 공간에서도 플레이어마다 서로 다른 경험을 하게 되고, 기존 게임의 결정론적 대사보다 생동감 있는 반응을 느낄 수 있다." },
         { type: "video", src: "assets/video/npc-ai.mp4", cap: "AI NPC 레프 — 인게임 시연" },
-        { type: "p", text: "[본문 이어서 — 레프의 성격 설계, 전시 환경(네트워크 불안정) 대응 등]" }
+        { type: "p", text: "판단은 게임 로직이 쥐고, AI는 말투만 맡는다. 장소와 감정 단계 같은 상태는 로직이 정해진 값으로 넘기고, AI는 그 값을 레프의 말로 옮길 뿐이라 사실을 지어낼 여지가 없다. 플레이어가 어느 구역에 얼마나 머물렀는지도 대화의 재료가 된다." },
+        { type: "p", text: "레프는 정해 둔 조건에서만 말하고, 시퀀스가 시작되거나 조작이 막히는 구간에서는 목소리를 줄이다 멈춘다. 전시장 와이파이가 끊길 것도 가정해, 네트워크가 없어도 조건별 대사로 체험이 이어지게 했다." }
       ]
     },
     {
@@ -219,7 +222,7 @@ window.SITE = {
       credits: [
         { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ],
           sub: [ { n: "이정희", w: "Ron 3D 모델링 · 리토폴로지 · Substance Painter 텍스처" } ] },
-        { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
+        { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인 (전체의 70% 이상)" } ] },
         { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
           sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" },
                  { n: "이정희", w: "사운드 적용 · 시퀀서 연출 지원" } ] }
@@ -266,19 +269,19 @@ window.SITE = {
       credits: [
         { part: "게임 시스템 · UX", main: [ { n: "이정희", w: "핵심 플레이 루프 · 퀘스트 시스템 · 시스템 통합 (Blueprint · Story Framework)" } ],
           sub: [ { n: "김영은", w: "마그네틱 시스템 · 홀로그램 시스템" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 대화 구조 설계 · 구역 상태 시스템 C++ 플러그인 (FGZoneSystem) 설계 · 구현" } ],
           sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
         { part: "플레이테스트", sub: [ { n: "이정희", w: "전시 플레이테스트로 UX 문제 파악 · 개선" } ] }
       ],
       readTime: "4분",
-      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "SYSTEM", v: "Blueprint · Story Framework" } ],
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "SYSTEM", v: "Blueprint · Story Framework · C++ 플러그인" } ],
       blocks: [
-        { type: "p", text: "플레이어 곁에서 말을 거는 NPC와, 탐색 · 협력 · 수집 루프를 돌리는 시스템들. 모두 언리얼 엔진 블루프린트와 AI 다이얼로그로 구현했다." },
+        { type: "p", text: "플레이어 곁에서 말을 거는 NPC와, 탐색 · 협력 · 수집 루프를 돌리는 시스템들. 언리얼 엔진 블루프린트와 C++ 플러그인, AI 다이얼로그로 구현했다." },
         { type: "h", text: "AI NPC 다이얼로그" },
         { type: "pictos", items: [
-          { icon: "eye", t: "관찰", d: "플레이어의 행동과 위치를 상태값으로 읽는다." },
-          { icon: "nodes", t: "판단", d: "상태에 맞는 질문 세트를 골라 AI에 보낸다." },
-          { icon: "chat", t: "발화", d: "상황에 맞는 대사로 플레이어에게 말을 건다." }
+          { icon: "eye", t: "상태를 값으로", d: "장소 · 감정 단계 · 체류 시간 같은 상태를 로직이 정해진 키-값으로 넘긴다." },
+          { icon: "nodes", t: "프롬프트 빌더", d: "값을 문장으로 조립해 AI에 보내고, 형식이 맞지 않는 응답은 버린다." },
+          { icon: "chat", t: "발화 조건", d: "걸어 둔 조건에서만 말하고, 시퀀스 · 조작 제한 구간에서는 줄이다 멈춘다." }
         ] },
         { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 NPC 대사" },
         { type: "video", src: "assets/video/bp-lef-ai.mp4", cap: "레프 AI 블루프린트" },
@@ -326,7 +329,7 @@ window.SITE = {
       },
       {
         id: "donghyeok", n: "윤동혁", r: "Level Designer · AI NPC Programmer", img: "",
-        parts: ["레벨 디자인", "AI NPC 제작", "시스템 연동"],
+        parts: ["레벨 디자인 (70% 이상)", "AI NPC 대화 구조", "구역 상태 시스템 (C++)"],
         quote: "“너무 인위적이지 않으면서도, 목표는 쉽게 찾을 수 있도록.”",
         body: [
           "시나리오와 컨셉아트의 분위기에 맞춰 전반적인 레벨 구성과 디테일을 구현하며, 공간이 시각적으로 설득력 있게 느껴지도록 만드는 데 집중했다.",
