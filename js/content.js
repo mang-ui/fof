@@ -114,6 +114,7 @@ window.SITE = {
   */
   // inside = 인게임 3개 (탐색 · 협력 · 수집) → 슬라이드 카드 / behind = 다큐멘테이션 1개 → 넓은 카드
   // thumb/hero 가 영상이면 poster 이미지가 로딩 전 대기 화면이 된다
+  // credits: 파트별 MAIN(주 담당) / SUB(참여). 기사 상단 바이라인은 MAIN으로 자동 생성
   tracks: { inside: "Inside the Game", behind: "Documentation" },
   articles: [
     {
@@ -121,8 +122,13 @@ window.SITE = {
       id: "explore", track: "inside", sub: "Explore", keys: ["탐색"],
       t: "부서진 위버호를 걷다", d: "1층 엔진실에서 2층 기계실까지. 무너진 함선을 누비며 길과 단서를 찾는다.",
       thumb: "assets/video/loop-explore.mp4", hero: "assets/video/loop-explore.mp4", poster: "assets/img/shot-corridor.jpg",
-      byline: "레벨 · 윤동혁 / 기획 · 이정희", readTime: "5분",
-      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 이정희" } ],
+      credits: [
+        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] },
+        { part: "플레이 흐름", main: [ { n: "이정희", w: "플레이 흐름 · 레벨 루프 설계" } ],
+          sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] }
+      ],
+      readTime: "5분",
+      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" } ],
       blocks: [
         { type: "p", text: "항성 폭풍으로 항로를 이탈한 위버호. 붉은 비상등과 꺼져가는 차폐막의 푸른빛만이 어둠 속에서 깜빡인다. 플레이어는 무너진 함선을 돌아다니며 길과 단서를 찾고, 레프가 띄우는 함선 도면과 푸른 홀로그램 나비가 다음 목적지를 알려준다." },
         { type: "p", text: "레벨은 시나리오와 컨셉아트의 분위기에 맞춰 구성하되, 너무 인위적이지 않으면서도 플레이어가 목표를 쉽게 찾을 수 있도록 설계했다." },
@@ -150,8 +156,13 @@ window.SITE = {
       id: "cooperate", track: "inside", sub: "Cooperate", keys: ["협력"],
       t: "셋이어야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
-      byline: "AI NPC · 윤동혁 / Lef 모델링 · 김영은 / 기획 · 이정희", readTime: "5분",
-      facts: [ { k: "ROBOTS", v: "F-404 · 레프 · 론" }, { k: "CONTROL", v: "Fix · Ron 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" }, { k: "CREDIT", v: "윤동혁 · 김영은 · 이정희" } ],
+      credits: [
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 다이얼로그 시스템" } ],
+          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
+        { part: "인터랙션 기획", main: [ { n: "이정희", w: "캐릭터 인터랙션 기획 · 구현" } ] }
+      ],
+      readTime: "5분",
+      facts: [ { k: "ROBOTS", v: "F-404 · 레프 · 론" }, { k: "CONTROL", v: "Fix · Ron 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" } ],
       blocks: [
         { type: "p", text: "세 로봇은 서로 다른 능력으로 함께 문제를 푼다. 플레이어는 Fix와 Ron을 번갈아 조작하고, 레프는 AI 동료로 곁을 지킨다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다." },
         { type: "pictos", items: [
@@ -175,8 +186,12 @@ window.SITE = {
       id: "collect", track: "inside", sub: "Collect", keys: ["수집"],
       t: "흩어진 기억을 줍다", d: "함선 곳곳에 남은 가족의 물건. 하나를 찾을 때마다 기억 하나가 홀로그램으로 깨어난다.",
       thumb: "assets/video/loop-collect.mp4", hero: "assets/video/loop-collect.mp4", poster: "assets/img/family-photo.jpg",
-      byline: "시나리오 · 김지숙 / 기획 · 이정희", readTime: "4분",
-      facts: [ { k: "ITEMS", v: "장난감 4개 → 환풍구 열쇠" }, { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "CREDIT", v: "김지숙 · 이정희" } ],
+      credits: [
+        { part: "시나리오", main: [ { n: "김지숙", w: "시나리오" } ] },
+        { part: "수집 요소", main: [ { n: "이정희", w: "수집 요소 기획 · 구현" } ] }
+      ],
+      readTime: "4분",
+      facts: [ { k: "ITEMS", v: "장난감 4개 → 환풍구 열쇠" }, { k: "THEME", v: "기억 · 가족 · 유대" } ],
       blocks: [
         { type: "p", text: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
         { type: "h", text: "2층에 흩어진 장난감" },
@@ -197,7 +212,16 @@ window.SITE = {
       id: "making", track: "behind", sub: "Documentation",
       t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱, AI로 말하는 NPC까지. 네 명이 위버호를 만든 방법.",
       thumb: "assets/video/cine-ai.mp4", hero: "assets/video/cine-ai.mp4", poster: "assets/img/shot-earth-1.jpg",
-      byline: "TEAM FIVEGUYS — 시네마틱 · 김지숙 / 아트 · TA · 김영은 / 레벨 · AI NPC · 윤동혁 / 기획 · UI · 이정희", readTime: "8분",
+      credits: [
+        { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
+          sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" } ] },
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
+          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
+        { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ] },
+        { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
+        { part: "기획 · UI/UX", main: [ { n: "이정희", w: "게임 기획 · UI · UX" } ] }
+      ],
+      readTime: "8분",
       facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
       blocks: [
         { type: "p", text: "언리얼 엔진 5와 AI를 결합한 하이브리드 시네마틱 제작 방식을 썼다. 언리얼 엔진에서 카메라 구도와 장면을 구성한 뒤, 이를 스틸컷으로 추출해 AI 영상으로 생성한다. 시네마틱 제작 효율을 높이는 동시에, 실제 게임 플레이 화면과 시네마틱 영상 사이의 시각적 이질감을 줄이기 위해서다. 여기에 NPC 대사까지 AI로 연동했다." },
@@ -248,7 +272,7 @@ window.SITE = {
     members: [
       {
         id: "youngeun", n: "김영은", r: "Leader · PM · Art Director · TA", img: "",
-        parts: ["컨셉아트", "캐릭터 디자인", "플레이어 인터랙션"],
+        parts: ["컨셉아트", "캐릭터 디자인", "플레이어 인터랙션", "시네마틱 시퀀스", "마그네틱 · 홀로그램 시스템"],
         quote: "“두 캐릭터의 개성과 세계관이 시각적으로 선명하게 전달될 수 있도록.”",
         body: [
           "팀의 리더이자 PM으로서 프로젝트의 전체 타임라인을 조율하고 방향성을 이끄는 동시에, 아트 디렉터와 테크니컬 아티스트 역할을 겸임했다. 컨셉아트와 캐릭터 디자인을 중점적으로 작업하며 게임의 전반적인 시각적 분위기를 정의했다.",

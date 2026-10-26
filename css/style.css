@@ -245,6 +245,13 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .aside dl{display:grid;gap:14px;margin-top:12px}
 .aside dt{font:500 11px var(--mono);color:var(--muted);letter-spacing:.1em}
 .aside dd{font-size:15px;font-weight:600}
+.credits-head{margin-top:28px;padding-top:14px;border-top:1px solid var(--rule)}
+.credits{display:grid;gap:16px;margin-top:12px}
+.cr b{display:block;font:500 11px var(--mono);color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
+.cr p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:15px;font-weight:600;margin:4px 0}
+.cr small{flex-basis:100%;font-size:12px;font-weight:400;color:var(--muted);line-height:1.5}
+.role-tag{font:500 10px var(--mono);letter-spacing:.08em;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:1px 7px}
+.role-tag.main{color:var(--accent);border-color:var(--accent)}
 .next{display:block;border-top:2px solid var(--ink);padding:28px 0 60px}
 .next .t{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:900;margin-top:6px}
 .next .t::after{content:" →";color:var(--accent)}
