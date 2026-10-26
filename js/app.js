@@ -158,6 +158,7 @@
         <div class="label">How to Play</div>
         <h2>${H.head}</h2>
         ${Pictos(H.items)}
+        ${H.loop ? `<p class="loop-note"><span class="label">Core Loop</span>${H.loop}</p>` : ""}
       </section>
 
       <section class="feature">
