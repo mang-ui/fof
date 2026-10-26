@@ -83,3 +83,10 @@ credits: [
 | 팀원 포트레이트 | 3:4 |
 | 서브 캐릭터 | 1:1 (원형) |
 | 기사 본문 사진 | 자유 (원본 비율 그대로, 세로 사진은 `pair`로 두 장씩) |
+
+## 배포할 때 (캐시)
+GitHub Pages는 CSS · JS를 브라우저에 10분간 저장한다. 고친 내용이 바로 보이도록
+`index.html`의 `?v=숫자`를 올릴 때마다 바꾼다:
+```
+V=$(date +%y%m%d%H%M); sed -i -E "s#(css/style\.css|js/(content|icons|app)\.js)(\?v=[0-9]+)?\"#\1?v=$V\"#g" index.html
+```
