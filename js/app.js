@@ -151,7 +151,7 @@
           <div class="body">${W.text.map(p => `<p>${p}</p>`).join("")}</div>
         </div>
         <dl class="world-facts">${W.facts.map(f => `<div><dt>${f.k}</dt><dd>${f.v}</dd></div>`).join("")}</dl>
-        ${W.img !== undefined ? media(W.img, "world-img", "WORLD") : ""}
+        ${W.img !== undefined ? media(W.img, "world-img", "WORLD", { poster: W.poster }) : ""}
       </section>
 
       <section class="feature">
@@ -166,7 +166,7 @@
         <h2>등장인물</h2>
         <div class="chars">
           ${C.characters.map(c => `
-            <article class="char">${media(c.img, "", c.name.toUpperCase())}
+            <article class="char">${media(c.img, "", c.name.toUpperCase(), { poster: c.poster })}
             <h3>${c.name}${c.kr ? `<small>${c.kr}</small>` : ""}</h3><div class="role">${c.role}</div><p>${c.desc}</p></article>`).join("")}
         </div>
         ${C.subCharacters.length ? `
@@ -174,7 +174,7 @@
           <div class="label">Supporting Cast</div>
           <div class="subs">
             ${C.subCharacters.map(c => `
-              <div class="sub">${media(c.img, "")}
+              <div class="sub">${media(c.img, "", "", { poster: c.poster })}
               <div><div class="role">${c.role}</div><b>${c.name}</b><p>${c.desc}</p></div></div>`).join("")}
           </div>
         </div>` : ""}
