@@ -10,6 +10,7 @@
 window.SITE = {
 
   /* ---------- 기본 정보 ---------- */
+  version: "v4",                            // 배포 버전 (zip 번호와 동일)
   title: "FOF",
   subtitle: "home://error",
   issue: "Exhibition Issue · 2026",
