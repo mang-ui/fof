@@ -1,7 +1,7 @@
 /* =========================================================
    FOF 사이트 — 라우터 + 렌더러
    콘텐츠 수정은 js/content.js 에서. 이 파일은 구조/동작만.
-   라우트: #/  ·  #/game  ·  #/game/:id  ·  #/team/:id
+   라우트: #/ (랜딩 → 스크롤로 본지)  ·  #/game (같은 페이지, 본지 위치)  ·  #/game/:id  ·  #/team/:id
    ========================================================= */
 (function () {
   const C = window.SITE;
@@ -27,7 +27,7 @@
 
   /* ---------- 공통 마스트헤드 ---------- */
   const Mast = on => `
-    <header class="mast-bar"><div class="wrap">
+    <header class="mast-bar" id="mag"><div class="wrap">
       <a class="logo" href="#/">${C.title}<small>${C.subtitle}</small></a>
       <nav>
         <a href="#/game" class="${on === "game" ? "on" : ""}">Game</a>
@@ -89,9 +89,10 @@
           <div class="l-title">${C.title}</div>
           <div class="l-sub">${C.subtitle}<span class="cur">_</span></div>
           <p class="l-deck">${L.deck}</p>
-          <a class="enter" href="#/game">게임 소개 보기 <span>ENTER</span></a>
+          <a class="enter" href="#/game" data-scroll="mag">게임 소개 보기 <span>SCROLL ↓</span></a>
           <div class="dots" id="dots">${L.shots.map(() => "<i></i>").join("")}</div>
         </div>
+        <a class="scroll-cue" href="#/game" data-scroll="mag" aria-label="아래로 스크롤해 게임 소개 보기"><span></span></a>
       </div>
     </section>`;
   }
@@ -288,17 +289,40 @@
   function route() {
     clearInterval(reelTimer);
     const [a, b] = location.hash.replace(/^#\/?/, "").split("/");
+    const home = isHome();
     let html;
-    if (!a) html = Landing();
-    else if (a === "game" && b) html = Article(b);
+    if (a === "game" && b) html = Article(b);
     else if (a === "team" && b) html = Member(b);
-    else html = Game();
+    else html = Landing() + Game();   // 랜딩과 본지는 한 페이지 — 스크롤로 이어진다
     app.innerHTML = html;
     app.style.animation = "none"; void app.offsetWidth; app.style.animation = "";
-    window.scrollTo(0, 0);
-    if (!a) startReel();
+    const mag = a === "game" && document.getElementById("mag");
+    window.scrollTo({ top: mag ? mag.offsetTop : 0, behavior: "instant" });
+    if (home) startReel();
   }
+  const isHome = () => { const [a, b] = location.hash.replace(/^#\/?/, "").split("/"); return !a || (a === "game" && !b); };
   window.addEventListener("hashchange", route);
+
+  /* 랜딩 스크롤 효과: 내려갈수록 랜딩이 어두워지며 글자가 올라가고,
+     랜딩 중간에서 손을 떼면 본지(또는 맨 위)로 부드럽게 붙는다 */
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let snapT = null, snapping = false, lastY = 0, dir = 1;
+  window.addEventListener("scroll", () => {
+    const land = document.querySelector(".landing");
+    if (!land) return;
+    const h = land.offsetHeight, y = window.scrollY;
+    if (y !== lastY) { dir = y > lastY ? 1 : -1; lastY = y; }
+    land.style.setProperty("--p", Math.min(1, y / h).toFixed(3));
+    if (still) return;
+    clearTimeout(snapT);
+    if (snapping) { snapT = setTimeout(() => { snapping = false; }, 160); return; }
+    snapT = setTimeout(() => {
+      if (y <= 0 || y >= h - 2) return;
+      snapping = true;
+      // 내리는 중이면 조금만 내려도 본지로, 올리는 중이면 조금만 올려도 맨 위로
+      window.scrollTo({ top: (dir > 0 ? y > h * 0.1 : y > h * 0.9) ? h : 0, behavior: "smooth" });
+    }, 140);
+  }, { passive: true });
 
   /* 팀 섹션 스크롤 (해시 라우팅과 충돌 방지) */
   document.addEventListener("click", e => {
@@ -306,7 +330,7 @@
     if (!el) return;
     e.preventDefault();
     const go = () => document.getElementById(el.dataset.scroll)?.scrollIntoView({ behavior: "smooth" });
-    if (location.hash !== "#/game") { location.hash = "#/game"; setTimeout(go, 80); }
+    if (!isHome()) { location.hash = "#/game"; setTimeout(go, 80); }
     else go();
   });
 
