@@ -109,12 +109,13 @@ window.SITE = {
   ],
 
   /* ---------- 더 깊이 읽기 (기사) ----------
-     블록 종류: p · h · img · video · pull · compare · pictos · workflow
+     블록 종류: p · h · img · video · pair(세로 사진 2장) · pull · compare · pictos · workflow
      (형식은 README.md 참고)
   */
   // inside = 인게임 3개 (탐색 · 협력 · 수집) → 슬라이드 카드 / behind = 다큐멘테이션 1개 → 넓은 카드
   // thumb/hero 가 영상이면 poster 이미지가 로딩 전 대기 화면이 된다
   // credits: 파트별 MAIN(주 담당) / SUB(참여). 기사 상단 바이라인은 MAIN으로 자동 생성
+  //          파트 순서는 제작 파이프라인 순 — 기획 → 시나리오 → 아트 → 레벨 → AI NPC → 시네마틱
   tracks: { inside: "Inside the Game", behind: "Documentation" },
   articles: [
     {
@@ -123,9 +124,9 @@ window.SITE = {
       t: "부서진 위버호를 걷다", d: "1층 엔진실에서 2층 기계실까지. 무너진 함선을 누비며 길과 단서를 찾는다.",
       thumb: "assets/video/loop-explore.mp4", hero: "assets/video/loop-explore.mp4", poster: "assets/img/shot-corridor.jpg",
       credits: [
-        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] },
         { part: "플레이 흐름", main: [ { n: "이정희", w: "플레이 흐름 · 레벨 루프 설계" } ],
-          sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] }
+          sub: [ { n: "김영은", w: "마그네틱 시스템 제작 · 홀로그램 시스템 제작 · 대화 NPC 배치" } ] },
+        { part: "레벨 디자인", main: [ { n: "윤동혁", w: "레벨 구성 · 디테일" } ] }
       ],
       readTime: "5분",
       facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" } ],
@@ -157,9 +158,9 @@ window.SITE = {
       t: "셋이어야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
       thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
       credits: [
+        { part: "인터랙션 기획", main: [ { n: "이정희", w: "캐릭터 인터랙션 기획 · 구현" } ] },
         { part: "AI NPC", main: [ { n: "윤동혁", w: "AI 다이얼로그 시스템" } ],
-          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
-        { part: "인터랙션 기획", main: [ { n: "이정희", w: "캐릭터 인터랙션 기획 · 구현" } ] }
+          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] }
       ],
       readTime: "5분",
       facts: [ { k: "ROBOTS", v: "F-404 · 레프 · 론" }, { k: "CONTROL", v: "Fix · Ron 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" } ],
@@ -202,8 +203,10 @@ window.SITE = {
           { icon: "plane", t: "비행기", d: "마지막 장난감 — 환풍구 열쇠로 이어진다." }
         ] },
         { type: "p", text: "장난감 네 개를 모두 모아야 환풍구 열쇠가 손에 들어오고, 다음 구역으로 가는 길이 열린다." },
-        { type: "img", src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
-        { type: "img", src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" },
+        { type: "pair", items: [
+          { src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
+          { src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" }
+        ] },
         { type: "pull", text: "“이렇게 잡고 던지면 돼. 한번 던져봐!”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 캐서린, 캐치볼 플래시백</small>" },
         { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분 등]" }
       ]
@@ -213,13 +216,13 @@ window.SITE = {
       t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱, AI로 말하는 NPC까지. 네 명이 위버호를 만든 방법.",
       thumb: "assets/video/cine-ai.mp4", hero: "assets/video/cine-ai.mp4", poster: "assets/img/shot-earth-1.jpg",
       credits: [
-        { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
-          sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" } ] },
-        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
-          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
+        { part: "기획 · UI/UX", main: [ { n: "이정희", w: "게임 기획 · UI · UX" } ] },
         { part: "아트 · TA", main: [ { n: "김영은", w: "컨셉아트 · 캐릭터 디자인 · 플레이어 인터랙션" } ] },
         { part: "레벨", main: [ { n: "윤동혁", w: "레벨 디자인" } ] },
-        { part: "기획 · UI/UX", main: [ { n: "이정희", w: "게임 기획 · UI · UX" } ] }
+        { part: "AI NPC", main: [ { n: "윤동혁", w: "AI NPC 제작 · 시스템 연동" } ],
+          sub: [ { n: "김영은", w: "캐릭터 디자인" } ] },
+        { part: "AI 시네마틱", main: [ { n: "김지숙", w: "시나리오 · 시네마틱 연출 · AI 영상 · 편집" } ],
+          sub: [ { n: "김영은", w: "레벨 디자인 · 시네마틱 시퀀스 (수리, 환풍구)" } ] }
       ],
       readTime: "8분",
       facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
