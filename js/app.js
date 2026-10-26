@@ -92,7 +92,7 @@
       <aside class="qr-side">
         <div class="mast">${C.title}<small>${C.subtitle}</small><div class="label" style="margin-top:10px">${C.issue}</div></div>
         <div>
-          <div class="qr-box"><canvas id="qr" width="29" height="29"></canvas></div>
+          <div class="qr-box">${C.qr ? `<img src="${C.qr}" alt="QR" style="width:100%;display:block;image-rendering:pixelated">` : `<canvas id="qr" width="29" height="29"></canvas>`}</div>
           <h3>폰으로 스캔하고<br>이어서 읽어보세요</h3>
           <p>게임 소개 · 캐릭터 · 제작진</p>
         </div>

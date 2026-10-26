@@ -14,7 +14,8 @@ window.SITE = {
   subtitle: "home://error",
   issue: "Exhibition Issue · 2026",
   exhibit: "2026 전시 · 부스 A-00",          // TODO: 코엑스/킨텍스 확정되면 수정
-  siteUrl: "",                               // 배포 주소 확정되면 입력 (키오스크 QR용)
+  siteUrl: "",                               // 배포 주소 확정되면 입력
+  qr: "",                                    // 실제 QR 이미지 경로 (예: "assets/img/qr.png"). 비우면 가짜 QR
   credit: "© 2026 TEAM FIVEGUYS. All Rights Reserved.",
   links: [
     { label: "Instagram", href: "#" },
