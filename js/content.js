@@ -27,10 +27,10 @@ window.SITE = {
   landing: {
     deck: "기억, 유대, 그리고 가족.",          // [출처] 다큐멘테이션용 시트 > 한줄글
     shots: [
-      { cap: "PROLOGUE — 위버호 식당", src: "", poster: "" },
-      { cap: "STELLAR STORM", src: "", poster: "" },
-      { cap: "F-404 & LEF", src: "", poster: "" },
-      { cap: "BLUE BUTTERFLY", src: "", poster: "" }
+      { cap: "FLASHBACK — 지구의 밤", src: "assets/img/shot-earth-1.jpg", poster: "" },
+      { cap: "WEAVER — 1F", src: "assets/img/shot-ron-run.jpg", poster: "" },
+      { cap: "WEAVER — CORRIDOR", src: "assets/img/shot-corridor.jpg", poster: "" },
+      { cap: "FLASHBACK — 올리와 론", src: "assets/img/shot-earth-2.jpg", poster: "" }
     ]
   },
 
@@ -38,7 +38,7 @@ window.SITE = {
   cover: {
     title: "기억, 유대,<br>그리고 <em>가족</em>",
     deck: "로봇의 시선과 망가진 우주선이라는 낯선 공간을 통해 기억·유대·가족을 되짚어보는 1인 협동 어드벤처 게임.",
-    trailer: { src: "", poster: "", cap: "플레이 영상 — 유튜브 링크를 넣으면 바로 임베드됩니다" }
+    trailer: { src: "assets/img/fof-logo.jpg", poster: "", cap: "FOF home://error — 플레이 영상 유튜브 링크로 교체 예정" }
   },
 
   /* ---------- 게임 소개 ---------- */
@@ -69,7 +69,7 @@ window.SITE = {
       { k: "SHIP", v: "위버호 · 30년 항해" },
       { k: "OPERATOR", v: "프런티어 엔터프라이스" }
     ],
-    img: ""
+    img: "assets/img/earth-catchball.jpg"
   },
 
   /* ---------- 플레이 방법 (픽토그램) ---------- */
@@ -88,16 +88,16 @@ window.SITE = {
   // [출처] 시나리오 > 등장인물 (스포일러는 덜어냄)
   characters: [
     { name: "Ron", kr: "론", role: "COMPANION ROBOT",
-      desc: "지구에서부터 위버 가족과 함께 살아온 반려로봇. 가족이 냉동 수면에 든 뒤에도 홀로 깨어 함선을 지킨다. 기억 일부가 손상되었지만, 올리를 지켜야 한다는 마음만은 남아 있다.", img: "" },
+      desc: "지구에서부터 위버 가족과 함께 살아온 반려로봇. 가족이 냉동 수면에 든 뒤에도 홀로 깨어 함선을 지킨다. 기억 일부가 손상되었지만, 올리를 지켜야 한다는 마음만은 남아 있다.", img: "assets/img/char-ron.jpg" },
     { name: "Fix", kr: "F-404", role: "EXPLORATION & REPAIR",
-      desc: "프런티어 관제센터에서 파견한 대형 탐사수리 로봇. 말수가 거의 없고 행동과 제스처로 의사를 표현한다. 강한 힘으로 무너진 구조물을 들어 올려 길을 만든다.", img: "" },
+      desc: "프런티어 관제센터에서 파견한 대형 탐사수리 로봇. 말수가 거의 없고 행동과 제스처로 의사를 표현한다. 강한 힘으로 무너진 구조물을 들어 올려 길을 만든다.", img: "assets/img/char-fix.jpg" },
     { name: "Lef", kr: "레프", role: "SUPPORT UNIT",
-      desc: "F-404와 함께 파견된 소형 보조 로봇. 말이 많고 츤데레 기질. 스캔·통신·지도 투사에 능하지만 손이 없어 늘 F-404에게 의존한다.", img: "" }
+      desc: "F-404와 함께 파견된 소형 보조 로봇. 말이 많고 츤데레 기질. 스캔·통신·지도 투사에 능하지만 손이 없어 늘 F-404에게 의존한다.", img: "assets/img/char-lef.jpg" }
   ],
   subCharacters: [
-    { name: "헨리 위버", role: "FATHER · SCIENTIST", desc: "타우세티 이주 계획과 판타스마 에센스 기술의 핵심 과학자.", img: "" },
-    { name: "캐서린 위버", role: "MOTHER", desc: "론을 가족의 일원으로 대하는, 위버 가족의 따뜻한 중심.", img: "" },
-    { name: "올리 위버", role: "SON", desc: "장난기 많은 여섯 살. 론에게는 형 같은 존재.", img: "" }
+    { name: "헨리 위버", role: "FATHER · SCIENTIST", desc: "타우세티 이주 계획과 판타스마 에센스 기술의 핵심 과학자.", img: "assets/img/sub-henry.jpg" },
+    { name: "캐서린 위버", role: "MOTHER", desc: "론을 가족의 일원으로 대하는, 위버 가족의 따뜻한 중심.", img: "assets/img/sub-catherine.jpg" },
+    { name: "올리 위버", role: "SON", desc: "장난기 많은 여섯 살. 론에게는 형 같은 존재.", img: "assets/img/sub-ollie.jpg" }
   ],
 
   /* ---------- 더 깊이 읽기 (기사) ----------
@@ -109,7 +109,7 @@ window.SITE = {
     {
       id: "weaver", track: "inside", sub: "World & Level",
       t: "위버호, 네 개의 층", d: "항성 폭풍에 부서진 선발 이주선. 층마다 다른 기억이 잠들어 있다.",
-      thumb: "", hero: "", byline: "레벨 · 윤동혁 / 기획 · 이정희", readTime: "4분",
+      thumb: "assets/img/shot-corridor.jpg", hero: "assets/img/shot-corridor.jpg", byline: "레벨 · 윤동혁 / 기획 · 이정희", readTime: "4분",
       facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F · 3F" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 이정희" } ],
       blocks: [
         { type: "p", text: "항성 폭풍으로 항로를 이탈한 위버호. 붉은 비상등과 꺼져가는 차폐막의 푸른빛만이 어둠 속에서 깜빡인다. 레벨은 시나리오와 컨셉아트의 분위기에 맞춰 구성하되, 너무 인위적이지 않으면서도 플레이어가 목표를 쉽게 찾을 수 있도록 설계했다." },
@@ -120,7 +120,7 @@ window.SITE = {
           { icon: "power", t: "2F", d: "주 전력실 · 환풍구" },
           { icon: "heart", t: "3F", d: "가족 구역 — 부엌 · 안방 · 헨리의 작업실" }
         ] },
-        { type: "img", src: "", cap: "레벨 스크린샷 자리" },
+        { type: "img", src: "assets/img/shot-ron-run.jpg", cap: "위버호 1F — 앞서 달리는 론과 뒤따르는 Fix" },
         { type: "workflow", title: "챕터 흐름", steps: [
           { icon: "film", tool: "PROLOGUE", t: "위버호의 저녁 식사", d: "평화로운 식사 도중 항성 폭풍이 덮친다." },
           { icon: "robot", tool: "CH.1 · 1F", t: "정지된 반려로봇 론", d: "F-404와 레프가 부서진 통로에서 론을 발견하고 재가동한다." },
@@ -135,7 +135,7 @@ window.SITE = {
     {
       id: "companion", track: "inside", sub: "AI Companion",
       t: "말을 거는 동료", d: "플레이 상황에 따라 대사가 달라지는 AI NPC 다이얼로그 시스템.",
-      thumb: "", hero: "", byline: "AI NPC · 윤동혁", readTime: "4분",
+      thumb: "assets/img/lef-wide.jpg", hero: "assets/img/lef-wide.jpg", byline: "AI NPC · 윤동혁", readTime: "4분",
       facts: [ { k: "SYSTEM", v: "AI 다이얼로그" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁" } ],
       blocks: [
         { type: "p", text: "더 풍부한 사용자 경험을 위해, 플레이 상황에 따라 출력될 NPC 대사에 AI를 연동해 다이얼로그 시스템을 구축했다. 기존 게임의 결정론적 경험보다 더 생동감 있는 반응을 느낄 수 있도록 하는 것이 목표였다." },
@@ -150,7 +150,7 @@ window.SITE = {
     {
       id: "memory", track: "inside", sub: "Narrative",
       t: "흩어진 가족의 기억", d: "오브젝트 하나가 기억 하나를 깨운다. 발견하는 서사의 구조.",
-      thumb: "", hero: "", byline: "시나리오 · 김지숙 / 기획 · 이정희", readTime: "3분",
+      thumb: "assets/img/family-photo.jpg", hero: "assets/img/earth-catchball.jpg", byline: "시나리오 · 김지숙 / 기획 · 이정희", readTime: "3분",
       facts: [ { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "CREDIT", v: "김지숙 · 이정희" } ],
       blocks: [
         { type: "p", text: "이 게임은 기억과 가족, 그리고 유대라는 보편적인 감정을 다룬다. 여정의 끝에서 지나간 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺는다. 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 탄생하는 것 — 그것이 FOF가 전하고자 하는 메시지다." },
@@ -161,7 +161,8 @@ window.SITE = {
           { icon: "pen", t: "헨리의 펜", d: "전력실에 남은 헨리의 홀로그램." },
           { icon: "book", t: "《BUILDING A HOUSE》", d: "숨겨진 문을 여는 단서." }
         ] },
-        { type: "img", src: "", cap: "가족사진 — 지구의 집 앞, 헨리 · 캐서린 · 올리 · 론" },
+        { type: "img", src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
+        { type: "img", src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" },
         { type: "pull", text: "“이렇게 잡고 던지면 돼. 한번 던져봐!”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 캐서린, 캐치볼 플래시백</small>" },
         { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분 등]" }
       ]
@@ -169,7 +170,7 @@ window.SITE = {
     {
       id: "cinematic", track: "behind", sub: "AI Cinematic",
       t: "AI로 찍은 시네마틱", d: "카메라 앵글, 조명, 인물의 동작까지 프롬프트로 디렉팅하다.",
-      thumb: "", hero: "", byline: "시네마틱 · 김지숙", readTime: "5분",
+      thumb: "assets/img/shot-earth-1.jpg", hero: "assets/img/shot-earth-2.jpg", byline: "시네마틱 · 김지숙", readTime: "5분",
       facts: [ { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "CREDIT", v: "김지숙" } ],
       blocks: [
         { type: "p", text: "많은 시간이 소요되는 시네마틱 제작 과정에 AI 영상 생성 도구를 적극적으로 도입했다. 카메라의 앵글과 조명, 인물의 동작까지 프롬프트로 세밀하게 디렉팅하며 장면을 구현했고, 언리얼 엔진으로 만든 게임 화면과 시네마틱이 하나의 작품처럼 느껴지도록 톤앤매너를 맞추는 데 집중했다." },
@@ -194,7 +195,7 @@ window.SITE = {
     {
       id: "pipeline", track: "behind", sub: "Pipeline",
       t: "실시간 엔진 × AI 하이브리드", d: "게임 화면과 영상 사이의 이질감을 줄이는 제작 파이프라인.",
-      thumb: "", hero: "", byline: "글 · 담당자", readTime: "5분",
+      thumb: "assets/img/char-fix.jpg", hero: "", byline: "글 · 담당자", readTime: "5분",
       facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "AI", v: "Higgsfield · Suno · AI 다이얼로그" } ],
       blocks: [
         { type: "p", text: "언리얼 엔진 5로 밀도 높은 시네마틱 비주얼을 연출하고, 시간이 많이 드는 시네마틱 제작에는 AI를 도입해 ‘실시간 엔진과 AI 간 하이브리드 작업 방식’을 채택했다. 여기에 NPC 대사까지 AI로 연동했다." },
@@ -212,7 +213,7 @@ window.SITE = {
     {
       id: "making", track: "behind", sub: "Making of",
       t: "네 명이 만든 위버호", d: "시행착오와 팀 이야기, 제작 회고.",
-      thumb: "", hero: "", byline: "TEAM FIVEGUYS", readTime: "4분",
+      thumb: "assets/img/intermission.jpg", hero: "assets/img/intermission.jpg", byline: "TEAM FIVEGUYS", readTime: "4분",
       facts: [ { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
       blocks: [
         { type: "p", text: "[본문 자리 — 개발 현황 영상, 회의, 전시 현장 이야기]" },
