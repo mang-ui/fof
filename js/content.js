@@ -84,9 +84,9 @@ window.SITE = {
   howToPlay: {
     head: "플레이 방법",
     items: [
-      { icon: "compass", t: "탐색", d: "폭풍으로 무너진 함선을 돌아다니며 길과 단서를 찾는다. 레프가 띄우는 함선 도면과 푸른 홀로그램 나비가 다음 목적지를 알려준다.", go: "flow" },
-      { icon: "swap", t: "협력", d: "F-404는 힘으로 구조물을 들어 길을 만들고, 레프는 스캔과 지도로 길을 안내하며, 작은 몸집의 론은 환풍구처럼 좁은 곳에 들어간다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다.", go: "companion" },
-      { icon: "memory", t: "수집", d: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다.", go: "flow" }
+      { icon: "compass", t: "탐색", d: "폭풍으로 무너진 함선을 돌아다니며 길과 단서를 찾는다. 레프가 띄우는 함선 도면과 푸른 홀로그램 나비가 다음 목적지를 알려준다.", go: "explore" },
+      { icon: "swap", t: "협력", d: "F-404는 힘으로 구조물을 들어 길을 만들고, 레프는 스캔과 지도로 길을 안내하며, 작은 몸집의 론은 환풍구처럼 좁은 곳에 들어간다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다.", go: "cooperate" },
+      { icon: "memory", t: "수집", d: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다.", go: "collect" }
     ],
     // 픽토그램 아래 한 줄 — 루프 구조
     loop: "탐색으로 단서를 찾고, 협력으로 길을 열고, 수집으로 기억을 되찾으면 다음 구역이 열린다. 이 과정을 반복하며 론은 잃어버린 가족의 기억과 함께 자신이 누구였는지를 되찾아 간다."
@@ -112,17 +112,21 @@ window.SITE = {
      블록 종류: p · h · img · video · pull · compare · pictos · workflow
      (형식은 README.md 참고)
   */
-  tracks: { inside: "Inside the Game", behind: "Behind the Scenes" },
+  // inside = 인게임 3개 (탐색 · 협력 · 수집) → 슬라이드 카드 / behind = 다큐멘테이션 1개 → 넓은 카드
+  // thumb/hero 가 영상이면 poster 이미지가 로딩 전 대기 화면이 된다
+  tracks: { inside: "Inside the Game", behind: "Documentation" },
   articles: [
     {
       // [출처] FG_퀘스트리스트 > 퀘스트_세부정리 (인게임 기준. 3F가 있던 시나리오는 이전 버전)
-      id: "flow", track: "inside", sub: "Play Flow", keys: ["탐색", "협력", "수집"],
-      t: "플레이 흐름", d: "부서진 위버호의 1층에서 2층 기계실까지, 세 로봇이 함께 전력을 되살리는 길.",
-      thumb: "assets/img/shot-corridor.jpg", hero: "assets/img/shot-corridor.jpg", byline: "레벨 · 윤동혁 / 시나리오 · 김지숙 / 기획 · 이정희", readTime: "6분",
-      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 김지숙 · 이정희" } ],
+      id: "explore", track: "inside", sub: "Explore", keys: ["탐색"],
+      t: "부서진 위버호를 걷다", d: "1층 엔진실에서 2층 기계실까지. 무너진 함선을 누비며 길과 단서를 찾는다.",
+      thumb: "assets/video/loop-explore.mp4", hero: "assets/video/loop-explore.mp4", poster: "assets/img/shot-corridor.jpg",
+      byline: "레벨 · 윤동혁 / 기획 · 이정희", readTime: "5분",
+      facts: [ { k: "FLOORS", v: "1F · 1.5F · 2F" }, { k: "GOAL", v: "함선 전력 복구" }, { k: "PLAY TIME", v: "약 15분" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 이정희" } ],
       blocks: [
-        { type: "p", text: "항성 폭풍으로 항로를 이탈한 위버호. 붉은 비상등과 꺼져가는 차폐막의 푸른빛만이 어둠 속에서 깜빡인다. 레벨은 시나리오와 컨셉아트의 분위기에 맞춰 구성하되, 너무 인위적이지 않으면서도 플레이어가 목표를 쉽게 찾을 수 있도록 설계했다." },
-        { type: "h", text: "탐색 — 층별 구조" },
+        { type: "p", text: "항성 폭풍으로 항로를 이탈한 위버호. 붉은 비상등과 꺼져가는 차폐막의 푸른빛만이 어둠 속에서 깜빡인다. 플레이어는 무너진 함선을 돌아다니며 길과 단서를 찾고, 레프가 띄우는 함선 도면과 푸른 홀로그램 나비가 다음 목적지를 알려준다." },
+        { type: "p", text: "레벨은 시나리오와 컨셉아트의 분위기에 맞춰 구성하되, 너무 인위적이지 않으면서도 플레이어가 목표를 쉽게 찾을 수 있도록 설계했다." },
+        { type: "h", text: "층별 구조" },
         { type: "pictos", items: [
           { icon: "door", t: "1F", d: "엔진실 · 엔진 코어 — 쓰러진 론을 만나는 곳" },
           { icon: "layers", t: "1.5F", d: "1층과 2층을 잇는 구역 — 마지막에 되살릴 전력" },
@@ -139,40 +143,62 @@ window.SITE = {
           { icon: "swap", tool: "2F · 협력", t: "다시 만난 Fix", d: "기계실 문 옆 레버를 열어 Fix와 다시 만나고, 각자 콘솔을 조작해 1.5층 전력을 되살린다." },
           { icon: "film", tool: "ENDING", t: "엔딩 시퀀스", d: "[엔딩 퀘스트 확정 후 작성]" }
         ] },
-        { type: "h", text: "수집 — 흩어진 장난감" },
-        { type: "p", text: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 깨어난다. 2층에 흩어진 장난감 네 개를 모두 모아야 환풍구로 가는 길이 열린다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
+        { type: "p", text: "[본문 이어서 — 레벨 제작 과정, 모듈러 구성, 라이팅 등]" }
+      ]
+    },
+    {
+      id: "cooperate", track: "inside", sub: "Cooperate", keys: ["협력"],
+      t: "셋이어야 열리는 문", d: "힘의 F-404, 길잡이 레프, 작은 몸집의 론. 혼자서는 열 수 없는 길을 함께 연다.",
+      thumb: "assets/video/loop-cooperate.mp4", hero: "assets/video/loop-cooperate.mp4", poster: "assets/img/lef-wide.jpg",
+      byline: "AI NPC · 윤동혁 / Lef 모델링 · 김영은 / 기획 · 이정희", readTime: "5분",
+      facts: [ { k: "ROBOTS", v: "F-404 · 레프 · 론" }, { k: "CONTROL", v: "Fix · Ron 번갈아 조작" }, { k: "COMPANION", v: "레프 — AI 다이얼로그" }, { k: "CREDIT", v: "윤동혁 · 김영은 · 이정희" } ],
+      blocks: [
+        { type: "p", text: "세 로봇은 서로 다른 능력으로 함께 문제를 푼다. 플레이어는 Fix와 Ron을 번갈아 조작하고, 레프는 AI 동료로 곁을 지킨다. 혼자서는 열 수 없는 문과 장치도 셋이 힘을 합치면 열린다." },
+        { type: "pictos", items: [
+          { icon: "wrench", t: "F-404", d: "힘으로 무너진 구조물을 들어 올려 길을 만든다." },
+          { icon: "eye", t: "레프", d: "스캔과 지도 투사로 길을 안내하고, 상황에 맞춰 말을 건다." },
+          { icon: "robot", t: "론", d: "작은 몸집으로 환풍구처럼 좁은 곳에 들어간다." }
+        ] },
+        { type: "h", text: "함께 푸는 순간들" },
+        { type: "pictos", items: [
+          { icon: "wrench", t: "론을 고치다", d: "1층에서 쓰러진 론의 팔을 찾아 다시 움직이게 한다." },
+          { icon: "bug", t: "혼자 들어간 환풍구", d: "론만 들어갈 수 있는 파이프 속, 외계 벌레를 피해 기계실로." },
+          { icon: "swap", t: "다시 만나 켜는 불", d: "레버로 Fix와 합류하고, 각자 콘솔을 맡아 1.5층 전력을 되살린다." }
+        ] },
+        { type: "h", text: "말을 거는 동료, 레프" },
+        { type: "p", text: "플레이어와 동행하는 NPC 레프에 AI 다이얼로그 시스템을 적용해, 플레이 상황에 맞는 다양한 대사를 생성하도록 했다. 같은 공간에서도 플레이어마다 서로 다른 경험을 하게 되고, 기존 게임의 결정론적 대사보다 생동감 있는 반응을 느낄 수 있다." },
+        { type: "video", src: "assets/video/npc-dialogue.mp4", cap: "상황에 따라 달라지는 레프의 대사" },
+        { type: "p", text: "[본문 이어서 — 레프의 성격 설계, 전시 환경(네트워크 불안정) 대응 등]" }
+      ]
+    },
+    {
+      id: "collect", track: "inside", sub: "Collect", keys: ["수집"],
+      t: "흩어진 기억을 줍다", d: "함선 곳곳에 남은 가족의 물건. 하나를 찾을 때마다 기억 하나가 홀로그램으로 깨어난다.",
+      thumb: "assets/video/loop-collect.mp4", hero: "assets/video/loop-collect.mp4", poster: "assets/img/family-photo.jpg",
+      byline: "시나리오 · 김지숙 / 기획 · 이정희", readTime: "4분",
+      facts: [ { k: "ITEMS", v: "장난감 4개 → 환풍구 열쇠" }, { k: "THEME", v: "기억 · 가족 · 유대" }, { k: "CREDIT", v: "김지숙 · 이정희" } ],
+      blocks: [
+        { type: "p", text: "함선 곳곳에 남겨진 가족의 물건을 찾으면 그 물건에 담긴 기억이 홀로그램으로 재생된다. 여정의 끝에서 가족의 기억을 함께 지켜낸 Fix와 Ron은 서로에게 새로운 유대를 맺고, 사라진 기억을 매개로 두 로봇 사이에 새로운 형태의 가족이 생겨난다." },
+        { type: "h", text: "2층에 흩어진 장난감" },
         { type: "pictos", items: [
           { icon: "robot", t: "로봇", d: "첫 번째 장난감 — 시퀀스가 함께 재생된다." },
           { icon: "train", t: "기차", d: "두 번째 장난감." },
           { icon: "rabbit", t: "토끼", d: "생활공간에서 찾는 세 번째 장난감." },
           { icon: "plane", t: "비행기", d: "마지막 장난감 — 환풍구 열쇠로 이어진다." }
         ] },
+        { type: "p", text: "장난감 네 개를 모두 모아야 환풍구 열쇠가 손에 들어오고, 다음 구역으로 가는 길이 열린다." },
         { type: "img", src: "assets/img/family-photo.jpg", cap: "가족사진 — 헨리 · 캐서린 · 올리 · 론" },
         { type: "img", src: "assets/img/ron-certificate.jpg", cap: "론의 활성화 인증서 — 올리의 낙서가 남아 있다" },
         { type: "pull", text: "“이렇게 잡고 던지면 돼. 한번 던져봐!”<br><small style=\"font:500 13px var(--mono);color:var(--muted)\">— 캐서린, 캐치볼 플래시백</small>" },
-        { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분, 레벨 제작 과정 등]" }
+        { type: "p", text: "[본문 이어서 — 희미한 홀로그램(론의 손상된 기억)과 지구 플래시백(기억 회수)의 연출 구분 등]" }
       ]
     },
     {
-      id: "companion", track: "inside", sub: "AI Companion", keys: ["협력"],
-      t: "말을 거는 동료", d: "플레이 상황에 따라 레프의 대사가 달라지는 AI NPC 다이얼로그 시스템.",
-      thumb: "assets/img/lef-wide.jpg", hero: "assets/img/lef-wide.jpg", byline: "AI NPC · 윤동혁 / Lef 모델링 · 김영은", readTime: "4분",
-      facts: [ { k: "SYSTEM", v: "AI 다이얼로그" }, { k: "ENGINE", v: "Unreal Engine 5" }, { k: "CREDIT", v: "윤동혁 · 김영은" } ],
-      blocks: [
-        { type: "p", text: "플레이어와 동행하는 NPC 레프에 AI 다이얼로그 시스템을 적용해, 플레이 상황에 맞는 다양한 대사를 생성하도록 했다. 같은 공간에서도 플레이어마다 서로 다른 경험을 하게 되고, 기존 게임의 결정론적 대사보다 생동감 있는 반응을 느낄 수 있다." },
-        { type: "pictos", items: [
-          { icon: "eye", t: "관찰", d: "플레이어의 행동과 위치를 상태값으로 읽는다." },
-          { icon: "nodes", t: "판단", d: "상태에 맞는 질문 세트를 골라 AI에 보낸다." },
-          { icon: "chat", t: "발화", d: "상황에 맞는 대사로 플레이어에게 말을 건다." }
-        ] },
-        { type: "p", text: "[본문 이어서 — 전시 환경(네트워크 불안정) 대응, 레프의 성격 설계 등]" }
-      ]
-    },
-    {
-      id: "pipeline", track: "behind", sub: "Pipeline & AI Cinematic",
-      t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱을 하나의 작품처럼 잇는 제작 방식.",
-      thumb: "assets/img/shot-earth-1.jpg", hero: "assets/img/shot-earth-2.jpg", byline: "시네마틱 · 김지숙 / 아트 · TA · 김영은 / AI NPC · 윤동혁", readTime: "7분",
-      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "CREDIT", v: "김지숙 · 김영은 · 윤동혁" } ],
+      id: "making", track: "behind", sub: "Documentation",
+      t: "실시간 엔진 × AI 하이브리드", d: "언리얼 엔진 화면과 AI로 찍은 시네마틱, AI로 말하는 NPC까지. 네 명이 위버호를 만든 방법.",
+      thumb: "assets/video/cine-ai.mp4", hero: "assets/video/cine-ai.mp4", poster: "assets/img/shot-earth-1.jpg",
+      byline: "TEAM FIVEGUYS — 시네마틱 · 김지숙 / 아트 · TA · 김영은 / 레벨 · AI NPC · 윤동혁 / 기획 · UI · 이정희", readTime: "8분",
+      facts: [ { k: "ENGINE", v: "Unreal Engine 5" }, { k: "DCC", v: "Blender" }, { k: "VIDEO", v: "Higgsfield" }, { k: "MUSIC", v: "Suno" }, { k: "NPC", v: "AI 다이얼로그" }, { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
       blocks: [
         { type: "p", text: "언리얼 엔진 5와 AI를 결합한 하이브리드 시네마틱 제작 방식을 썼다. 언리얼 엔진에서 카메라 구도와 장면을 구성한 뒤, 이를 스틸컷으로 추출해 AI 영상으로 생성한다. 시네마틱 제작 효율을 높이는 동시에, 실제 게임 플레이 화면과 시네마틱 영상 사이의 시각적 이질감을 줄이기 위해서다. 여기에 NPC 대사까지 AI로 연동했다." },
         { type: "workflow", title: "파이프라인 개요", steps: [
@@ -199,19 +225,17 @@ window.SITE = {
           { icon: "branch", t: "분기", d: "UI 선택지에 따라 갈리는 장면." }
         ] },
         { type: "compare", a: { src: "", cap: "STORYBOARD" }, b: { src: "", cap: "AI GENERATED" } },
+        { type: "h", text: "AI NPC 다이얼로그" },
+        { type: "pictos", items: [
+          { icon: "eye", t: "관찰", d: "플레이어의 행동과 위치를 상태값으로 읽는다." },
+          { icon: "nodes", t: "판단", d: "상태에 맞는 질문 세트를 골라 AI에 보낸다." },
+          { icon: "chat", t: "발화", d: "상황에 맞는 대사로 플레이어에게 말을 건다." }
+        ] },
+        { type: "video", src: "assets/video/npc-ai.mp4", cap: "AI NPC 시스템 — 인게임 시연" },
         { type: "img", src: "", cap: "컨트롤 리그 세팅 / 블루프린트 화면 자리" },
-        { type: "p", text: "[본문 이어서]" }
-      ]
-    },
-    {
-      id: "making", track: "behind", sub: "Making of",
-      t: "네 명이 만든 위버호", d: "시행착오와 팀 이야기, 제작 회고.",
-      thumb: "assets/img/intermission.jpg", hero: "assets/img/intermission.jpg", byline: "TEAM FIVEGUYS", readTime: "4분",
-      facts: [ { k: "TEAM", v: "4명" }, { k: "EXHIBITION", v: "2026 NCA 쇼케이스" } ],
-      blocks: [
-        { type: "p", text: "[본문 자리 — 개발 현황 영상, 회의, 전시 현장 이야기]" },
-        { type: "video", src: "", cap: "LV1 · LV2 개발 현황" },
-        { type: "p", text: "[본문 이어서]" }
+        { type: "h", text: "네 명이 만든 위버호" },
+        { type: "p", text: "[본문 자리 — 시행착오와 팀 이야기, 개발 현황 영상, 회의, 전시 현장 이야기]" },
+        { type: "video", src: "", cap: "LV1 · LV2 개발 현황" }
       ]
     }
   ],
