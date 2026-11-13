@@ -308,7 +308,7 @@ window.SITE = {
     intro: "네 명이 만들고, 다섯 번째가 완성하는 팀.",
     members: [
       {
-        id: "youngeun", n: "김영은", r: "Leader · PM · Art Director · TA", img: "",
+        id: "youngeun", n: "김영은", r: "Leader · PM · Art Director · TA", img: "assets/img/team-youngeun.jpg",
         parts: ["컨셉아트", "캐릭터 디자인", "플레이어 인터랙션", "시네마틱 시퀀스", "마그네틱 · 홀로그램 시스템"],
         quote: "“두 캐릭터의 개성과 세계관이 시각적으로 선명하게 전달될 수 있도록.”",
         body: [
@@ -341,7 +341,7 @@ window.SITE = {
         links: [ { label: "포트폴리오 (PDF)", href: "assets/docs/portfolio-yoon-donghyeok.pdf" }, { label: "a01089841040@gmail.com", href: "mailto:a01089841040@gmail.com" } ]
       },
       {
-        id: "jeonghee", n: "이정희", r: "Game Designer · UI/UX Designer", img: "",
+        id: "jeonghee", n: "이정희", r: "Game Designer · UI/UX Designer", img:"assets/img/team-jeonghee.jpg",
         parts: ["게임 시스템", "플레이 흐름 · UX", "상호작용 · 시스템 통합", "Ron 모델링 · 텍스처"],
         quote: "“각자 만든 레벨과 시네마틱, 인터랙션을 하나의 플레이 흐름으로.”",
         body: [
@@ -349,7 +349,7 @@ window.SITE = {
           "캐릭터 인터랙션과 수집 요소 등 게임 내 상호작용을 기획·구현했으며, 각 팀원이 제작한 레벨과 시네마틱, 인터랙션 요소를 하나의 플레이 흐름으로 연결하는 작업을 담당했다."
         ],
         works: ["", "", ""],
-        links: [ { label: "포트폴리오", href: "#" }, { label: "Email", href: "#" } ]
+        links: [ { label: "포트폴리오 (PDF)", href: "assets/docs/portfolio-lee-jeonghee.pdf" }, { label: "Email", href: "#" } ]
       },
       {
         // 5번째 멤버 = 플레이어
