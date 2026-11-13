@@ -330,7 +330,7 @@ window.SITE = {
         links: [ { label: "포트폴리오", href: "#" }, { label: "Email", href: "#" } ]
       },
       {
-        id: "donghyeok", n: "윤동혁", r: "Level Designer · AI NPC Programmer", img: "",
+        id: "donghyeok", n: "윤동혁", r: "Level Designer · AI NPC Programmer", img: "assets/img/team-donghyeok.jpg",
         parts: ["레벨 디자인", "AI NPC 대화 구조", "구역 상태 시스템"],
         quote: "“너무 인위적이지 않으면서도, 목표는 쉽게 찾을 수 있도록.”",
         body: [
