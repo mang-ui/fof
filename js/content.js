@@ -319,7 +319,7 @@ window.SITE = {
         links: [ { label: "포트폴리오", href: "#" }, { label: "Email", href: "#" } ]
       },
       {
-        id: "jisook", n: "김지숙", r: "Scenario Writer · Cinematic Director", img: "",
+        id: "jisook", n: "김지숙", r: "Scenario Writer · Cinematic Director", img: "assets/img/team-jisook.jpg",
         parts: ["시나리오", "시네마틱 연출", "AI 영상 제작", "편집"],
         quote: "“카메라의 앵글과 조명, 인물의 동작까지 프롬프트로.”",
         body: [
