@@ -301,6 +301,13 @@ a.picto .more{margin-top:auto;padding-top:6px}
 .mem-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
 .mem-links a{padding:12px 18px;border:1px solid var(--ink);font-size:14px;font-weight:600}
 .mem-links a:first-child{background:var(--ink);color:var(--paper)}
+.mem-qr{display:flex;align-items:center;gap:18px;margin-top:14px;padding:14px;border:1px solid var(--rule);background:var(--card);max-width:440px}
+.mem-qr .qr-code{flex:0 0 132px;width:132px;height:132px;display:block}
+.mem-qr .qr-code svg{width:100%;height:100%;display:block}
+.mem-qr .qr-txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mem-qr b{font-family:var(--serif);font-size:19px}
+.mem-qr small{font-size:13px;color:var(--muted)}
+.mem-qr code{font:500 11px var(--mono);color:var(--muted);word-break:break-all}
 .mem-nav{display:flex;justify-content:space-between;border-top:2px solid var(--ink);padding:22px 0 60px;font-family:var(--serif);font-size:20px;font-weight:700}
 .mem-nav a span{display:block;font:500 11px var(--mono);color:var(--muted);letter-spacing:.1em}
 .mem-nav a:last-child{text-align:right}
@@ -327,3 +334,4 @@ a.picto .more{margin-top:auto;padding-top:6px}
 
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:699px){.mem-qr .qr-code,.mem-qr small{display:none}}

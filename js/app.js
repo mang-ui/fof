@@ -30,6 +30,17 @@
   const ytId = src => ((src || "").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/) || [])[1];
   const ytLink = src => ytId(src) ? `<a class="yt-link" href="https://youtu.be/${ytId(src)}" target="_blank" rel="noopener">YouTube에서 보기 ↗</a>` : "";
   const esc = t => String(t).replace(/<[^>]+>/g, "").replace(/"/g, "&quot;");
+  // QR — 키오스크에서 폰으로 이어 보기. 상대 경로는 siteUrl 기준 절대 주소로 바꿔서 인코딩한다
+  const QR = l => {
+    if (typeof qrcode !== "function") return "";
+    const url = new URL(l.href, C.siteUrl || location.href).href;
+    const q = qrcode(0, "M"); q.addData(url); q.make();
+    const short = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    return `<a class="mem-qr" href="${l.href}" target="_blank" rel="noopener">
+      <span class="qr-code">${q.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}</span>
+      <span class="qr-txt"><span class="label">Scan to open</span><b>${l.label}</b><small>휴대폰 카메라로 스캔하면 바로 열려요</small><code>${short}</code></span>
+    </a>`;
+  };
   // 대기 화면 = 그 영상의 첫 장면 (assets/video/a.mp4 → assets/poster/a.jpg). 로딩 전·후 화면이 같다
   const posterOf = src => src.replace("assets/video/", "assets/poster/").replace(/\.(mp4|webm|mov)$/i, ".jpg");
 
@@ -342,7 +353,8 @@
         </div>` : `
         <div class="label" style="margin-top:20px">Selected Works</div>
         <div class="works">${(m.works || []).map((w, k) => media(w, "", `WORK ${pad(k + 1)}`, { alt: `${m.n} 작업 ${k + 1}` })).join("")}</div>
-        <div class="mem-links">${(m.links || []).map(l => `<a href="${l.href}"${/^(https?:|assets\/)/.test(l.href) ? ' target="_blank" rel="noopener"' : ""}>${l.label}</a>`).join("")}</div>`;
+        <div class="mem-links">${(m.links || []).map(l => `<a href="${l.href}"${/^(https?:|assets\/)/.test(l.href) ? ' target="_blank" rel="noopener"' : ""}>${l.label}</a>`).join("")}</div>
+        ${(m.links || []).filter(l => /^(https?:|assets\/)/.test(l.href)).map(QR).join("")}`;
     return `${Mast("team")}
     <main class="wrap">
       <section class="mem">
