@@ -316,7 +316,7 @@ window.SITE = {
           "테크니컬 아티스트로서는 디자인된 에셋이 실제 엔진 안에서 플레이어와 어떻게 상호작용할지 설계했다. 캐릭터를 조작할 때 느끼는 물리적인 움직임, 퍼즐과 상호작용할 때의 피드백 같은 인터랙션을 기술적으로 구현했다."
         ],
         works: ["", "", ""],
-        links: [ { label: "포트폴리오", href: "#" }, { label: "Email", href: "#" } ]
+        links: [ { label: "포트폴리오 (PDF)", href: "assets/docs/portfolio-kim-youngeun.pdf" }, { label: "Email", href: "#" } ]
       },
       {
         id: "jisook", n: "김지숙", r: "Scenario Writer · Cinematic Director", img: "assets/img/team-jisook.jpg",
