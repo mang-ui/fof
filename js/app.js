@@ -351,8 +351,8 @@
           ${m.now ? `<div class="dark"><span class="label">NOW</span><b>${m.now.t}</b><p>${m.now.d}</p></div>` : ""}
           ${m.later ? `<div><span class="label">COMING SOON</span><b>${m.later.t}</b><p>${m.later.d}</p></div>` : ""}
         </div>` : `
-        <div class="label" style="margin-top:20px">Selected Works</div>
-        <div class="works">${(m.works || []).map((w, k) => media(w, "", `WORK ${pad(k + 1)}`, { alt: `${m.n} 작업 ${k + 1}` })).join("")}</div>
+        ${(m.works || []).some(Boolean) ? `<div class="label" style="margin-top:20px">Selected Works</div>
+        <div class="works">${m.works.filter(Boolean).map((w, k) => media(w, "", `WORK ${pad(k + 1)}`, { alt: `${m.n} 작업 ${k + 1}` })).join("")}</div>` : ""}
         <div class="mem-links">${(m.links || []).map(l => `<a href="${l.href}"${/^(https?:|assets\/)/.test(l.href) ? ' target="_blank" rel="noopener"' : ""}>${l.label}</a>`).join("")}</div>
         ${(m.links || []).filter(l => /^(https?:|assets\/)/.test(l.href)).map(QR).join("")}`;
     return `${Mast("team")}
